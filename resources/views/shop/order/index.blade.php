@@ -32,10 +32,10 @@
                 @foreach($orders as $order)
                     <tr>
                         <td>
-                            <strong>{{ $order->id }}</strong>
+                            <strong>#1000{{ $order->id }}</strong>
                         </td>
                         <td>
-                            <a href="{{ route('order.show', $order->id) }}">{{ __('Customer') }}</a>
+                            <a href="{{ route('order.show', $order->id) }}">{{ $order->user->name ?? 'Customer'}}</a>
                         </td>
                         <td>
                             {{ price($order->price ?? '0') }}
