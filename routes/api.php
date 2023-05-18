@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\ProductApiController;
+use App\Http\Controllers\Api\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +19,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::any('/products', [ProductApiController::class, 'all']);
-Route::any('/brands', [ProductApiController::class, 'brand']);
-Route::any('/store/cart_to_order', [ProductApiController::class, 'storeCartToOrder']);
+Route::prefix('product')->group(function (){
+    Route::post('/all', [ApiController::class, 'products']);
+    Route::post('/search', [ApiController::class, 'products_search']);
+    Route::post('/by_category', [ApiController::class, 'product_by_category']);
+});
+Route::prefix('brand')->group(function (){
+    Route::post('/all', [ApiController::class, 'brands']);
+});
+
+    Route::post('/category', [ApiController::class, 'brand_all']);
+
+Route::any('/products', [ApiController::class, 'products']);
+Route::any('/products/search', [ApiController::class, 'all']);
+Route::any('/brands', [ApiController::class, 'brand']);
+Route::any('/store/cart_to_order', [ApiController::class, 'storeCartToOrder']);
