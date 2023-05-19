@@ -20,10 +20,10 @@ class ShellCommand
             ->run($captureOutput);
 
         if ($process->getExitCode()) {
-            $exception = new ShellCommandFailedException($cmd . " - " . $processOutput);
-            report($exception);
+            // $exception = new ShellCommandFailedException($cmd . " - " . $processOutput);
+            // report($exception);
 
-            throw $exception;
+            // throw $exception;
         }
 
         return $processOutput;
