@@ -4,11 +4,11 @@ class brand {
 
     // PAGES
     getBrands(data = {}){
-        return http.post('/brands', data);
+        return http.post('/brand/all', data);
     }
 
     getBrand(data = {}){
-        return http.post('/brand/{data.id}', data);
+        return http.post('/brand/id/{data.id}', data);
     }
 
 }

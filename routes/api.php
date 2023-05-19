@@ -23,12 +23,16 @@ Route::prefix('product')->group(function (){
     Route::post('/all', [ApiController::class, 'products']);
     Route::post('/search', [ApiController::class, 'products_search']);
     Route::post('/by_category', [ApiController::class, 'product_by_category']);
+    Route::post('/id/{id}', [ApiController::class, 'product_by_id']);
 });
 Route::prefix('brand')->group(function (){
     Route::post('/all', [ApiController::class, 'brands']);
 });
+Route::prefix('customer')->group(function (){
+    Route::post('/all', [ApiController::class, 'customers']);
+});
 
-    Route::post('/category', [ApiController::class, 'brand_all']);
+Route::post('/category', [ApiController::class, 'brand_all']);
 
 Route::any('/products', [ApiController::class, 'products']);
 Route::any('/products/search', [ApiController::class, 'all']);

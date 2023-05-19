@@ -58,6 +58,7 @@
 
         <div class="col-xl-8 col-lg-7 col-md-7 order-2 order-md-0">
 
+<<<<<<< HEAD
         <div class="card">
             <div class="card-header border-bottom">
                 <h5 class="card-title mb-3">Search Filter</h5>
@@ -150,6 +151,92 @@
                         <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit waves-effect waves-light">Submit</button>
                         <button type="reset" class="btn btn-label-secondary waves-effect" data-bs-dismiss="offcanvas">Cancel</button>
                         <input type="hidden"></form>
+=======
+        <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
+            <div class="card">
+                <div class="card-datatable table-responsive pt-0">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <div class="card-header flex-column flex-md-row">
+                            <div class="head-label text-center">
+                                <h5 class="card-title mb-0">{{ __('History of operations')  }}</h5>
+                            </div>
+                            <div class="dt-action-buttons text-end pt-3 pt-md-0">
+                                <div class="dt-buttons btn-group flex-wrap">
+                                    <div class="btn-group"><button
+                                            class="btn btn-secondary buttons-collection dropdown-toggle btn-label-primary me-2"
+                                            tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog"
+                                            aria-expanded="false"><span><i class="ti ti-file-export me-sm-1"></i> <span
+                                                    class="d-none d-sm-inline-block">{{ __('Export') }}</span></span><span
+                                                class="dt-down-arrow"></span></button></div> <button
+                                        class="btn btn-secondary create-new btn-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" type="button"><span><i class="ti ti-plus me-sm-1"></i>
+                                <span class="d-none d-sm-inline-block">{{ __('Add New Record') }}</span></span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="DataTables_Table_0_length"><label>{{ __('Show') }} <select
+                                            name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select">
+                                            <option value="7">7</option>
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="75">75</option>
+                                            <option value="100">100</option>
+                                        </select>{{ __('entries') }} </label></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end">
+                                <div id="DataTables_Table_0_filter" class="dataTables_filter"><label>{{ __('Search') }}:<input type="search"
+                                                                                                                   class="form-control" placeholder="" aria-controls="DataTables_Table_0"></label></div>
+                            </div>
+                        </div>
+                        <table class="datatables-basic table dataTable no-footer dtr-column" id="DataTables_Table_0"
+                               aria-describedby="DataTables_Table_0_info" style="width: 1216px;">
+                            <thead>
+                            <tr>
+                                <th class="control sorting_disabled dtr-hidden" rowspan="1" colspan="1"
+                                    style="width: 41px; display: none;" aria-label=""></th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                    style="width: 119px;" aria-label="Name: activate to sort column ascending">ID</th>
+
+
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                    style="width: 107px;" aria-label="Date: activate to sort column ascending">Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                    style="width: 146px;" aria-label="Salary: activate to sort column ascending">Update</th>
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                    style=" width: 141px;" aria-label="Status: activate to sort column ascending">Status</th>
+                                <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 151px;" aria-label="Actions">
+                                {{ __('Actions') }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd">
+                                <td valign="top" colspan="7" class="dataTables_empty">No data available in table</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 0
+                                    to 0 of 0 entries</div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a
+                                                href="#" aria-controls="DataTables_Table_0" data-dt-idx="previous" tabindex="0"
+                                                class="page-link">{{ __('Previous') }}</a></li>
+                                        <li class="paginate_button page-item next disabled" id="DataTables_Table_0_next"><a href="#"
+                                                                                                                            aria-controls="DataTables_Table_0" data-dt-idx="next" tabindex="0"
+                                                                                                                            class="page-link">{{ __('Next') }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> 4316fa0a015f13284140590472177bb77425ad05
                 </div>
             </div>
         </div>
