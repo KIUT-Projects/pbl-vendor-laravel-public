@@ -296,6 +296,7 @@ export default {
                 </div>
                 <div class="bill_information">
                     <p>#{{ billNumber }}</p>
+                    <section><option value="" v-for="(item, index) in items" :key="index"></option></section>
                     <p>{{ formattedDateTime }}</p>
                 </div>
                 <div class="product_list">
