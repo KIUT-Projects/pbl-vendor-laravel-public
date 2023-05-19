@@ -7,9 +7,23 @@ use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductApiController extends Controller
+class ApiController extends Controller
 {
-    public function all(){
+    public function products(){
+        try {
+            $products = Product::where('deleted', '0')->where('status', '1')->get();
+        }catch (\Exception $exception){
+            return response()->forbidden($exception->getMessage());
+        }
+
+        return response()->ok($products);
+    }
+
+    public function products_search(Request $request){
+        $request->validate([
+            'query' => 'required|max:255'
+        ]);
+
         try {
             $products = Product::where('deleted', '0')->where('status', '1')->get();
         }catch (\Exception $exception){

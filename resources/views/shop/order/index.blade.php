@@ -32,13 +32,13 @@
                 @foreach($orders as $order)
                     <tr>
                         <td>
-                            <strong>{{ $order->id }}</strong>
+                            <strong>#1000{{ $order->id }}</strong>
                         </td>
                         <td>
-                            <a href="{{ route('order.show', $order->id) }}">{{ __('Customer') }}</a>
+                            <a href="{{ route('order.show', $order->id) }}">{{ $order->user->name ?? 'Customer'}}</a>
                         </td>
                         <td>
-                            {{ $order->total_price ?? '0' }} UZS
+                            {{ price($order->price ?? '0') }}
                         </td>
                         <td>
                             <span class="badge bg-label-primary me-1">{{ __('Paid') }}</span>
