@@ -17,7 +17,7 @@
                             <input type="text" class="form-control" placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}" required>
                         </div>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">{{ __('Image') }}</label>
+                            <label for="formFile" class="form-label">{{ __('Image')}}</label>
                             <input class="form-control" type="file" id="image" name="image" value="{{ old('image') }}" required />
                         </div>
 

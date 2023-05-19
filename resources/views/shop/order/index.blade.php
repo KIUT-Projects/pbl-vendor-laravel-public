@@ -93,7 +93,7 @@
             aria-labelledby="offcanvasAddUserLabel"
         >
             <div class="offcanvas-header">
-                <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Add User</h5>
+                <h5 id="offcanvasAddUserLabel" class="offcanvas-title">{{ __('Add User') }}</h5>
                 <button
                     type="button"
                     class="btn-close text-reset"
@@ -104,7 +104,7 @@
             <div class="offcanvas-body mx-0 flex-grow-0 pt-0 h-100">
                 <form class="add-new-user pt-0" id="addNewUserForm" onsubmit="return false">
                     <div class="mb-3">
-                        <label class="form-label" for="add-user-fullname">Full Name</label>
+                        <label class="form-label" for="add-user-fullname">{{ __('Full Name') }}</label>
                         <input
                             type="text"
                             class="form-control"
@@ -115,7 +115,7 @@
                         />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="add-user-email">Email</label>
+                        <label class="form-label" for="add-user-email">{{ __('Email') }}</label>
                         <input
                             type="text"
                             id="add-user-email"
@@ -126,7 +126,7 @@
                         />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="add-user-contact">Contact</label>
+                        <label class="form-label" for="add-user-contact">{{ __('Contact') }}</label>
                         <input
                             type="text"
                             id="add-user-contact"
@@ -137,7 +137,7 @@
                         />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="add-user-company">Company</label>
+                        <label class="form-label" for="add-user-company">{{ __('Company') }}</label>
                         <input
                             type="text"
                             id="add-user-company"
@@ -148,7 +148,7 @@
                         />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="country">Country</label>
+                        <label class="form-label" for="country">{{ __('Country') }}</label>
                         <select id="country" class="select2 form-select">
                             <option value="">Select</option>
                             <option value="Australia">Australia</option>
