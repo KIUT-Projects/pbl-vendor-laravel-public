@@ -64,7 +64,7 @@
                         <strong>{{ $product->id }}</strong>
                     </td>
                     <td>
-                        <img src="{{ asset($product->image) }}" class="img-fluid">
+                        <img src="{{ asset($product->image) }}"  style="max-width: 80px;" class="img-fluid">
                     </td>
                     <td>
                         <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a>

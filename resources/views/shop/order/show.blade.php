@@ -2,13 +2,10 @@
 
 @section('content')
 
-
-    <div class="row">
-
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row invoice-preview">
                 <!-- Invoice -->
-                <div class="col-xl-9 col-md-8 col-12 mb-md-0 mb-4">
+                <div class="col-xl-12 col-md-8 col-8 mb-md-0 mb-4">
                     <div class="card invoice-preview-card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between flex-xl-row flex-md-column flex-sm-row flex-column m-sm-3 m-0">
@@ -21,7 +18,7 @@
                                     <p class="mb-0">+998 (95) 000 04 09 , +998 (93) 836 61 11</p>
                                 </div>
                                 <div>
-                                    <h4 class="fw-semibold mb-2"> {{ __('INVOICE') }} #1000{{ $order->id  }}</h4>
+                                    <h4 class="fw-semibold mb-2"> {{ __('INVOICE') }} #{{ 1000+$order->id  }}</h4>
                                     <div class="mb-2 pt-1">
                                         <span>{{ __('Cashier') }}:</span>
                                         <span class="fw-semibold">{{ $order->user->name ?? 'Customer'}}</span>
@@ -57,7 +54,7 @@
                                 @foreach($order->orderItems as $item)
 
                                     <tr>
-                                        <td><img src="{{ asset($item->product->image) }} "style="max-width: 50px;" class="img-fluid"></td>
+                                        <td><img src="{{ asset($item->product->image) }} "style="max-width: 80px;" class="img-fluid"></td>
                                     <td class="text-nowrap">{{ $item->product->name }}</td>
                                     <td>{{price( $item->product->price ?? '0') }}</td>
 
@@ -91,18 +88,7 @@
                             </table>
                         </div>
 
-                        <div class="card-body mx-3">
-                            <div class="row">
-                                <div class="col-12">
-                                    <span class="fw-semibold">{{ __('Note') }}:</span>
-                                    <span>{{ __('It was a pleasure working with you and your team. We hope you will keep us in mind for
-                            future freelance projects. Thank You!') }}</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
-
-    </div>
+            </div>
 @endsection
