@@ -19,14 +19,6 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
-        //$limit = $faker->optional()->passthrough(mt_rand(1, 5));
-        //$products = Product::limit($limit)->get();
-        //$total_price = 
-
-        //foreach($products as $product){
-
-        //}
-
         $price = mt_rand(150000, 5000000);
         
         return [
