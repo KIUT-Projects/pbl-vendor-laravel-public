@@ -113,7 +113,7 @@
                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                                     style=" width: 141px;" aria-label="Status: activate to sort column ascending">Status</th>
                                 <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 151px;" aria-label="Actions">
-                                    Actions</th>
+                                {{ __('Actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -132,10 +132,10 @@
                                     <ul class="pagination">
                                         <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a
                                                 href="#" aria-controls="DataTables_Table_0" data-dt-idx="previous" tabindex="0"
-                                                class="page-link">Previous</a></li>
+                                                class="page-link">{{ __('Previous') }}</a></li>
                                         <li class="paginate_button page-item next disabled" id="DataTables_Table_0_next"><a href="#"
                                                                                                                             aria-controls="DataTables_Table_0" data-dt-idx="next" tabindex="0"
-                                                                                                                            class="page-link">Next</a></li>
+                                                                                                                            class="page-link">{{ __('Next') }}</a></li>
                                     </ul>
                                 </div>
                             </div>
