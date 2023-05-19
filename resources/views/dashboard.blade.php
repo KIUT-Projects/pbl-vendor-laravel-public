@@ -11,7 +11,7 @@
             <div class="card">
               <div class="card-body d-flex justify-content-between align-items-center">
                 <div class="card-title mb-0">
-                  <h5 class="mb-0 me-2">{{ \App\Models\Order::count() }}</h5>
+                  <h5 class="mb-0 me-2">{{ \App\Models\Order::count() }} <b>+{{ \App\Models\Order::whereDate('created_at', today())->count() }}</b></h5>
                   <small>{{ __('Orders') }}</small>
                 </div>
                 <div class="card-icon">
@@ -27,7 +27,7 @@
             <div class="card">
               <div class="card-body d-flex justify-content-between align-items-center">
                 <div class="card-title mb-0">
-                  <h5 class="mb-0 me-2">{{ \App\Models\Product::count() }}</h5>
+                  <h5 class="mb-0 me-2">{{ \App\Models\Product::count() }} <b>+{{ \App\Models\Product::whereDate('created_at', today())->count() }}</b></h5>
                   <small>{{ __('Products') }}</small>
                 </div>
                 <div class="card-icon">
@@ -43,7 +43,7 @@
             <div class="card">
               <div class="card-body d-flex justify-content-between align-items-center">
                 <div class="card-title mb-0">
-                  <h5 class="mb-0 me-2">{{ \App\Models\Brand::count() }}</h5>
+                  <h5 class="mb-0 me-2">{{ \App\Models\Brand::count() }} <b>+{{ \App\Models\Brand::whereDate('created_at', today())->count() }}</b></h5>
                   <small>{{ __('Brands') }}</small>
                 </div>
                 <div class="card-icon">
@@ -59,7 +59,7 @@
             <div class="card">
               <div class="card-body d-flex justify-content-between align-items-center">
                 <div class="card-title mb-0">
-                  <h5 class="mb-0 me-2">{{ \App\Models\Category::count() }}</h5>
+                  <h5 class="mb-0 me-2">{{ \App\Models\Category::count() }} <b>+{{ \App\Models\Category::whereDate('created_at', today())->count() }}</b></h5>
                   <small>{{ __('Categories') }}</small>
                 </div>
                 <div class="card-icon">
@@ -137,6 +137,7 @@
     </div>
 
     <div class="row">
+
 
         <!-- Website Analytics -->
         <div class="col-lg-6 mb-4">

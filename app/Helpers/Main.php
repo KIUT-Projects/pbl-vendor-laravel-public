@@ -54,3 +54,5 @@ if (! function_exists('price')) {
         return number_format($price, 0, ' ', ' ').' '.$currency;
     }
 }
+
+require_once 'Statistics.php';
