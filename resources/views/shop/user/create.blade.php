@@ -13,10 +13,9 @@
                         @include('layouts.admin.inc.form_error')
 
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="link" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar">
                             <div class="button-wrapper">
                                 <label for="upload" class="btn btn-primary me-2 mb-3 waves-effect waves-light" tabindex="0">
-                                    <span class="d-none d-sm-block">Upload new photo</span>
+                                    <span class="d-none d-sm-block">Upload photo</span>
                                     <i class="ti ti-upload d-block d-sm-none"></i>
                                     <input type="file" id="upload"  name="image" value="{{ old('image') }}" class="account-file-input" hidden="" accept="image/png, image/jpeg">
                                 </label>
