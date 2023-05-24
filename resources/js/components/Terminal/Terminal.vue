@@ -373,7 +373,7 @@ export default {
                         </div>
                         <input type="text"
                             class="rounded-lg bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none"
-                            placeholder="Qidiruv ..." @input="apiPutProducts" v-model="this.search">
+                            placeholder="Qidiruv ..." @input="apiGetProducts" v-model="this.search">
                     </div>
                     <div class="h-full overflow-hidden mt-4">
                         <div class="h-full overflow-y-auto px-2">
