@@ -15,7 +15,7 @@ class ProductController extends BaseController
     public function index(Request $request)
     {
         if ($request->has('search')){
-            $products = Product::query()->where('name', 'LIKE', "%$request->search%")->with(['brand', 'category', 'supplier', 'user'])->get();
+            $products = Product::query()->where('name', 'LIKE', "%$request->search%")->orWhere('barcode', 'LIKE', "%$request->search%")->with(['brand', 'category', 'supplier', 'user'])->get();
         }else{
             $products = Product::query()->with(['brand', 'category', 'supplier', 'user'])->get();
         }

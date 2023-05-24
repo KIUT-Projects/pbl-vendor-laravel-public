@@ -330,9 +330,9 @@ export default {
                     <table>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
+                                <th>Nomi</th>
+                                <th>Soni</th>
+                                <th>Narxi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -417,10 +417,10 @@ export default {
                                     class="select-none cursor-pointer transition-shadow overflow-hidden rounded-2xl bg-white shadow hover:shadow-lg"
                                     :title="product.name" v-if="products" v-for="(product, index) in products" :key="index"
                                     :product="product">
-                                    <p class="mt-2 ml-2">{{ product.current_stock }} ta</p>
+                                    <p class="mt-2 ml-2">{{ product.current_stock }} ta - <code>({{ product.barcode }})</code></p>
                                     <img :src="product.image ?? '/theme/terminal/beef-burger.png'"
                                         :alt="product.name">
-                                    <div class="flex pb-3 px-3 text-sm -mt-3">
+                                    <div class="flex pb-3 px-3 text-sm -mt-3" style="flex-direction: column;">
                                         <p class="flex-grow truncate mr-1">{{ product.name }}</p>
                                         <p class="nowrap font-semibold">{{ number_format(product.price) }} UZS</p>
                                     </div>
@@ -507,9 +507,10 @@ export default {
     border-radius: 25px;
     background-color: #14e922;
     color: #fff;
-    height: 5rem;
     font-size: 2rem;
     font-weight: bold;
+    padding: 0.6rem 1rem;
+    margin: 2rem 0 0 0;
 }
 
 .bill_item .payment_information {

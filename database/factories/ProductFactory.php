@@ -32,6 +32,7 @@ class ProductFactory extends Factory
             'category_id' => Category::all()->random()->id,
             'brand_id' => Brand::all()->random()->id,
             'supplier_id' => Supplier::all()->random()->id,
+            'barcode' => rand(1000000000000, 9999999999999),
             'current_stock' => rand(1, 100),
             'featured' => rand(0, 1),
             'description' => $this->faker->text(400),

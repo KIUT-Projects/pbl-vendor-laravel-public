@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('supplier_id')->nullable();
             $table->integer('current_stock')->default(0);
             $table->boolean('featured')->default(0);
+            $table->bigInteger('barcode')->nullable();
             $table->longText('description')->nullable();
             $table->text('short_description')->nullable();
             $table->double('price', 64);
