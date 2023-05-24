@@ -88,6 +88,10 @@ export default {
             this.Clear();
             // this.apiGetProducts();
         },
+        Backpay(){
+            let bill = document.querySelector('#bill');
+            bill.style.zIndex = "1";
+        },
         generatePDF() {
             const element = this.$refs.pdfContent;
 
@@ -312,7 +316,7 @@ export default {
 
 <template>
     <div class="contener_main">
-        <div class="bill" id="bill" ref="pdfContent">
+        <div class="bill" id="bill" ref="pdfContent" @click="Backpay">
             <div class="bill_item">
                 <div class="logo">
                     <img src="../../../../public/images/logo/logo.png" alt="">
