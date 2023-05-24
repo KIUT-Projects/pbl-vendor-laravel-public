@@ -32,9 +32,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $brands = Brand::query()->where('deleted', '0')->get();
-        $suppliers = Supplier::query()->where('deleted', '0')->get();
-        $categories = Category::query()->where('deleted', '0')->get();
+        $brands = Brand::query()->get();
+        $suppliers = Supplier::query()->get();
+        $categories = Category::query()->get();
 
         return view('shop.product.create', compact('brands', 'suppliers', 'categories'));
     }
@@ -80,9 +80,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $brands = Brand::query()->where('deleted', '0')->get();
-        $suppliers = Supplier::query()->where('deleted', '0')->get();
-        $categories = Category::query()->where('deleted', '0')->get();
+        $brands = Brand::query()->get();
+        $suppliers = Supplier::query()->get();
+        $categories = Category::query()->get();
 
         return view('shop.product.edit', compact('product', 'brands', 'suppliers', 'categories'));
     }

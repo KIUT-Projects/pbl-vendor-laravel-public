@@ -41,17 +41,21 @@ export default {
             },
             choseProducts: [],
             products: [],
+            product_list_for_api: [],
             numberOfProducts: 0,
             AllPrice: 0,
             whichOneKindOfPeymentname: "Naqt pul",
             senttoapi: [],
-            billNumber: 123123,
+            billNumber: 100052,
             bill_date: Date.now(),
+            select_customer: '',
+            search: "",
         }
     },
     computed: {
         formattedDateTime() {
-            return moment(this.bill_date).format('MMMM Do YYYY, h:mm:ss a');
+            //return moment(this.bill_date).format('dd.mm.YYYY, h:mm:ss a');
+            return moment().format('LLL');
         }
     },
     updated() {
@@ -77,10 +81,12 @@ export default {
         TurnOffBill() {
             let bill = document.querySelector('#bill');
             bill.style.zIndex = "1";
+            console.log(this.select_customer);
             this.generatePDF();
             this.ProductsWhichSentToApi();
             this.apiPutProducts()
             this.Clear();
+            // this.apiGetProducts();
         },
         generatePDF() {
             const element = this.$refs.pdfContent;
@@ -125,6 +131,7 @@ export default {
                 this.choseProducts.push(product);
             }
             this.ProductsWhichSentToApi();
+            console.log(product);
         },
         ProductsWhichSentToApi() {
             this.senttoapi = [];
@@ -157,8 +164,20 @@ export default {
                 this.AllPrice += Number(element.price) * element.numberofProduct;
             });
         },
+        // serach() {
+        //     if (this.serach == "") {
+        //         console.log(0);
+        //         this.products = this.product_list_for_api
+        //     }
+        //     else {
+        //         this.products = this.product_list_for_api
+        //         this.products = this.products.filter(e => e.name.toLowerCase().search(this.search.toLowerCase()) != -1)
+        //         console.log(this.search.cont);
+        //     }
+        //     console.log(123);
+        // },
         apiPutProducts() {
-            axios.post('/api/store/cart_to_order/', {cart: this.senttoapi,totalPrice:this.AllPrice,payment: this.whichOneKindOfPeymentname})
+            axios.post('/api/store/cart_to_order/', { cart: this.senttoapi, totalPrice: this.AllPrice, payment: this.whichOneKindOfPeymentname })
                 .then(function (response) {
                     console.log(response);
                 })
@@ -167,14 +186,18 @@ export default {
                 });
         },
         apiGetProducts() {
-            product.getProducts().then((response) => {
-                if (response.data) {
-                    //console.log(response.data)
+            product.getProducts({'search': this.search}).then((response) => {
+                if (response.data && response.data.success) {
+                    //console.log('success keldi')
+                    // console.log(response.data.data)
+                    // this.product_list_for_api = response.data.data;
+                    // this.products = this.product_list_for_ap
                     this.products = response.data.data
                 } else {
                     console.log(response.data)
                 }
             })
+            console.log('api get product');
         },
 
         addToCart(id) {
@@ -296,7 +319,7 @@ export default {
                 </div>
                 <div class="bill_information">
                     <p>#{{ billNumber }}</p>
-                    <section><option value="" v-for="(item, index) in items" :key="index"></option></section>
+                    <!-- <select class="selectForcustomers" v-model="select_customer"><option value="customer">Customer</option> <option value="customer2">cusremer2</option></select> -->
                     <p>{{ formattedDateTime }}</p>
                 </div>
                 <div class="product_list">
@@ -319,18 +342,12 @@ export default {
                     </table>
                 </div>
                 <div class="payment_information">
-                    <table>
-                        <tr style="color: #7f75f0; font-size: 20px;font-weight: bold;">
-                            <td style="margin-top: 10%;">Umumiy sum</td>
-                            <td></td>
-                            <td>{{ number_format(AllPrice) }}</td>
-                        </tr>
-                        <tr style="color: #7f75f0; font-size: 20px;font-weight: bold;">
-                            <td>Tolov turi</td>
-                            <td></td>
-                            <td>{{ whichOneKindOfPeymentname }}</td>
-                        </tr>
-                    </table>
+                    <div>
+                        Umumiy sum: {{ number_format(AllPrice) }}
+                    </div>
+                    <div>
+                        Tolov turi: {{ whichOneKindOfPeymentname }}
+                    </div>
                 </div>
                 <div class="button_for_pay">
                     <button @click="TurnOffBill" style="width: 100%;">To` lov</button>
@@ -356,7 +373,7 @@ export default {
                         </div>
                         <input type="text"
                             class="rounded-lg bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none"
-                            placeholder="Search ..." v-model="search">
+                            placeholder="Qidiruv ..." @input="apiGetProducts" v-model="this.search">
                     </div>
                     <div class="h-full overflow-hidden mt-4">
                         <div class="h-full overflow-y-auto px-2">
@@ -396,7 +413,8 @@ export default {
                                     class="select-none cursor-pointer transition-shadow overflow-hidden rounded-2xl bg-white shadow hover:shadow-lg"
                                     :title="product.name" v-if="products" v-for="(product, index) in products" :key="index"
                                     :product="product">
-                                    <img :src="'/' + product.image ?? '/theme/terminal/beef-burger.png'"
+                                    <p class="mt-2 ml-2">{{ product.current_stock }} ta</p>
+                                    <img :src="product.image ?? '/theme/terminal/beef-burger.png'"
                                         :alt="product.name">
                                     <div class="flex pb-3 px-3 text-sm -mt-3">
                                         <p class="flex-grow truncate mr-1">{{ product.name }}</p>
@@ -451,12 +469,13 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 1.2rem;
 }
 
 .bill_item .logo {
+    max-width: 300px;
     width: 90%;
     margin: auto;
-    height: 20%;
 }
 
 .bill_item .product_list {
@@ -481,23 +500,26 @@ export default {
 }
 
 .bill_item .button_for_pay button {
-    width: 100%;
-    height: 100%;
     border-radius: 25px;
-    background-color: #0eff06;
+    background-color: #14e922;
+    color: #fff;
+    height: 5rem;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .bill_item .payment_information {
     width: 90%;
     height: 5%;
     margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.bill_item .payment_information table {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #250091;
 }
 
 .products {
@@ -515,5 +537,10 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.selectForcustomers {
+    width: 100px;
+    height: 20px;
 }
 </style>

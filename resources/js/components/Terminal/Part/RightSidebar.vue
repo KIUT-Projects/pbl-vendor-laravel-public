@@ -1,8 +1,6 @@
 <script >
 import Product from './Product.vue';
 
-
-
 export default{
     props: {
         choseProducts: {
@@ -100,18 +98,18 @@ export default{
                     <div class="select-none mb-3 bg-blue-gray-50 rounded-lg w-full text-blue-gray-700 py-2 px-2 flex justify-center">
                       <img alt="" class="rounded-lg h-10 w-10 bg-white shadow mr-2">
                       <div class="flex-grow">
-                        <h5 class="text-sm" x-text="item.name"></h5>
-                        <p class="text-xs block" x-text="priceFormat(item.price)"></p>
+                        <h5 class="text-sm"></h5>
+                        <p class="text-xs block"></p>
                       </div>
                       <div class="py-1">
                         <div class="w-28 grid grid-cols-3 gap-2 ml-2">
-                          <button x-on:click="addQty(item, -1)" class="rounded-lg text-center py-1 text-white bg-blue-gray-600 hover:bg-blue-gray-700 focus:outline-none">
+                          <button class="rounded-lg text-center py-1 text-white bg-blue-gray-600 hover:bg-blue-gray-700 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-3 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
                             </svg>
                           </button>
-                          <input x-model.number="item.qty" type="text" class="bg-white rounded-lg text-center shadow focus:outline-none focus:shadow-lg text-sm" style="padding:0;">
-                          <button x-on:click="addQty(item, 1)" class="rounded-lg text-center py-1 text-white bg-blue-gray-600 hover:bg-blue-gray-700 focus:outline-none">
+                          <input type="text" class="bg-white rounded-lg text-center shadow focus:outline-none focus:shadow-lg text-sm" style="padding:0;">
+                          <button class="rounded-lg text-center py-1 text-white bg-blue-gray-600 hover:bg-blue-gray-700 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-3 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                             </svg>
@@ -122,7 +120,7 @@ export default{
                   </template>
 
                   <div v-for="(item,index) in choseProducts" class="select-none mb-3 bg-blue-gray-50 rounded-lg w-full text-blue-gray-700 py-2 px-2 flex justify-center">
-                  <img :src="'/'+item.image" alt="" class="rounded-lg h-10 w-10 bg-white shadow mr-2" src="img/sawarma.png">
+                  <img :src="item.image" alt="" class="rounded-lg h-10 w-10 bg-white shadow mr-2" src="img/sawarma.png">
                   <div class="flex-grow">
                     <h5 class="text-sm" x-text="item.name">{{ item.name }}</h5>
                     <p class="text-xs block" x-text="priceFormat(item.price)">{{number_format(item.price) }}</p>
@@ -156,7 +154,7 @@ export default{
                 </div>
                 <div class="mb-3 text-blue-gray-700 px-3 pt-2 pb-3 rounded-lg bg-blue-gray-50">
                     <div class="flex text-lg font-semibold">
-                        <div class="flex-grow text-left">Tolov turi</div>
+                        <div class="flex-grow text-left">To'lov turi</div>
                         <div class="flex text-right">
                             <div class="mr-2">{{ whichOneKindOfPeymentname }}</div>
                         </div>
@@ -179,7 +177,7 @@ export default{
                     </div>
                 </div>
                 <div class="flex mb-3 text-lg font-semibold bg-cyan-50 text-blue-gray-700 rounded-lg py-2 px-3" style="display: none;">
-                    <div class="text-cyan-800">CHANGE</div>
+                    <div class="text-cyan-800">O'zgartirish</div>
                     <div class="text-right flex-grow text-cyan-600" x-text="priceFormat(change)">Rp. 0</div>
                 </div>
                 <div class="flex mb-3 text-lg font-semibold bg-pink-100 text-blue-gray-700 rounded-lg py-2 px-3" style="display: none;">
@@ -205,8 +203,4 @@ export default{
 .butonGreen{
   background: #22ff00;
 }
-
-
-
-
 </style>
