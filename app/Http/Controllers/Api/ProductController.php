@@ -36,12 +36,6 @@ class ProductController extends BaseController
      */
     public function show(Product $product)
     {
-        $product = Product::find($id);
-
-        if (is_null($product)) {
-            return $this->sendError('Product not found.');
-        }
-
         return $this->sendResponse(new ProductResource($product), 'Product retrieved successfully.');
     }
 
