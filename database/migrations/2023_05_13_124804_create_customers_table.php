@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->date('birthday')->nullable();
-            $table->boolean('deleted')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 };

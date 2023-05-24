@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('product')->group(function (){
-    Route::post('/all', [ApiController::class, 'products']);
-    Route::post('/search', [ApiController::class, 'products_search']);
+    Route::post('/all', [ProductController::class, 'index']);
+    Route::post('/search', [ProductController::class, 'products_search']);
     Route::post('/by_category', [ApiController::class, 'product_by_category']);
     Route::post('/id/{id}', [ApiController::class, 'product_by_id']);
 });

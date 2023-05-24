@@ -7,15 +7,14 @@ use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductsController extends BaseController
+class ProductController extends BaseController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::all();
-
+        $products = Product::query()->with(['brand', 'category', 'supplier', 'user'])->get();
         return $this->sendResponse(ProductResource::collection($products), 'Products retrieved successfully.');
     }
 

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->integer('order_id');
             $table->integer('reply_id')->nullable();
             $table->mediumText('note')->nullable();
-            $table->boolean('deleted')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
