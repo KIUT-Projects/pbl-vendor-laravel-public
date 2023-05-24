@@ -44,7 +44,7 @@
                                 <button class="dropdown-item" href="javascript:void(0);" type="submit">
                                     <i class="fi fi-{{ $language->code == 'en' ? 'us' : $language->code }} fis rounded-circle me-1 fs-3"></i>
                                     <span class="align-middle">{{ __($language->name) }}</span>
-                                </a>
+                                </button>
                             </form>
                         </li>
                     @endforeach
