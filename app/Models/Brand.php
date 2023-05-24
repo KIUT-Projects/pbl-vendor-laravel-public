@@ -9,9 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Brand extends Model
 {
     use HasFactory;
-    protected $guarded = [];
-    protected $table = 'brands';
-
+    protected $fillable = ['user_id', 'name', 'slug', 'image', 'status'];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
