@@ -46,7 +46,7 @@ export default {
             AllPrice: 0,
             whichOneKindOfPeymentname: "Naqt pul",
             senttoapi: [],
-            billNumber: 123123,
+            billNumber: 100052,
             bill_date: Date.now(),
             select_customer: '',
             search: "",
@@ -54,7 +54,8 @@ export default {
     },
     computed: {
         formattedDateTime() {
-            return moment(this.bill_date).format('MMMM Do YYYY, h:mm:ss a');
+            //return moment(this.bill_date).format('dd.mm.YYYY, h:mm:ss a');
+            return moment().format('LLL');
         }
     },
     updated() {
@@ -163,17 +164,18 @@ export default {
                 this.AllPrice += Number(element.price) * element.numberofProduct;
             });
         },
-        serach() {
-            if (this.serach == "") {
-                console.log(0);
-                this.products = this.product_list_for_api
-            }
-            else {
-                this.products = this.product_list_for_api
-                this.products = this.products.filter(e => e.name.search(this.search) != -1)
-                console.log(this.search.cont);
-            }
-        },
+        // serach() {
+        //     if (this.serach == "") {
+        //         console.log(0);
+        //         this.products = this.product_list_for_api
+        //     }
+        //     else {
+        //         this.products = this.product_list_for_api
+        //         this.products = this.products.filter(e => e.name.toLowerCase().search(this.search.toLowerCase()) != -1)
+        //         console.log(this.search.cont);
+        //     }
+        //     console.log(123);
+        // },
         apiPutProducts() {
             axios.post('/api/store/cart_to_order/', { cart: this.senttoapi, totalPrice: this.AllPrice, payment: this.whichOneKindOfPeymentname })
                 .then(function (response) {
@@ -184,18 +186,18 @@ export default {
                 });
         },
         apiGetProducts() {
-            product.getProducts().then((response) => {
+            product.getProducts({'search': this.search}).then((response) => {
                 if (response.data && response.data.success) {
                     //console.log('success keldi')
-                    console.log(response.data.data)
-                    //if()
+                    // console.log(response.data.data)
                     // this.product_list_for_api = response.data.data;
-                    // this.products = this.product_list_for_api;
+                    // this.products = this.product_list_for_ap
                     this.products = response.data.data
                 } else {
                     console.log(response.data)
                 }
             })
+            console.log('api get product');
         },
 
         addToCart(id) {
@@ -340,18 +342,12 @@ export default {
                     </table>
                 </div>
                 <div class="payment_information">
-                    <table>
-                        <tr style="color: #7f75f0; font-size: 20px;font-weight: bold;">
-                            <td style="margin-top: 10%;">Umumiy sum</td>
-                            <td></td>
-                            <td>{{ number_format(AllPrice) }}</td>
-                        </tr>
-                        <tr style="color: #7f75f0; font-size: 20px;font-weight: bold;">
-                            <td>Tolov turi</td>
-                            <td></td>
-                            <td>{{ whichOneKindOfPeymentname }}</td>
-                        </tr>
-                    </table>
+                    <div>
+                        Umumiy sum: {{ number_format(AllPrice) }}
+                    </div>
+                    <div>
+                        Tolov turi: {{ whichOneKindOfPeymentname }}
+                    </div>
                 </div>
                 <div class="button_for_pay">
                     <button @click="TurnOffBill" style="width: 100%;">To` lov</button>
@@ -377,7 +373,7 @@ export default {
                         </div>
                         <input type="text"
                             class="rounded-lg bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none"
-                            placeholder="Qidiruv ..." @input="this.serach" v-model="search">
+                            placeholder="Qidiruv ..." @input="apiGetProducts" v-model="this.search">
                     </div>
                     <div class="h-full overflow-hidden mt-4">
                         <div class="h-full overflow-y-auto px-2">
@@ -473,12 +469,13 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 1.2rem;
 }
 
 .bill_item .logo {
+    max-width: 300px;
     width: 90%;
     margin: auto;
-    height: 20%;
 }
 
 .bill_item .product_list {
@@ -503,23 +500,26 @@ export default {
 }
 
 .bill_item .button_for_pay button {
-    width: 100%;
-    height: 100%;
     border-radius: 25px;
-    background-color: #0eff06;
+    background-color: #14e922;
+    color: #fff;
+    height: 5rem;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .bill_item .payment_information {
     width: 90%;
     height: 5%;
     margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.bill_item .payment_information table {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #250091;
 }
 
 .products {
