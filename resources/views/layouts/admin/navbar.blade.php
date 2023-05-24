@@ -1,5 +1,5 @@
 @php
-    $languages = \App\Models\Language::where('deleted', '0')->where('status', '1')->get();
+    $languages = \App\Models\Language::where('status', '1')->get();
 @endphp
 <nav
     class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
