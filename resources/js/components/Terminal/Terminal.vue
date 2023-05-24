@@ -46,7 +46,7 @@ export default {
             AllPrice: 0,
             whichOneKindOfPeymentname: "Naqt pul",
             senttoapi: [],
-            billNumber: 123123,
+            billNumber: 100052,
             bill_date: Date.now(),
             select_customer: '',
             search: "",
@@ -54,7 +54,8 @@ export default {
     },
     computed: {
         formattedDateTime() {
-            return moment(this.bill_date).format('MMMM Do YYYY, h:mm:ss a');
+            //return moment(this.bill_date).format('dd.mm.YYYY, h:mm:ss a');
+            return moment().format('LLL');
         }
     },
     updated() {
@@ -340,18 +341,12 @@ export default {
                     </table>
                 </div>
                 <div class="payment_information">
-                    <table>
-                        <tr style="color: #7f75f0; font-size: 20px;font-weight: bold;">
-                            <td style="margin-top: 10%;">Umumiy sum</td>
-                            <td></td>
-                            <td>{{ number_format(AllPrice) }}</td>
-                        </tr>
-                        <tr style="color: #7f75f0; font-size: 20px;font-weight: bold;">
-                            <td>Tolov turi</td>
-                            <td></td>
-                            <td>{{ whichOneKindOfPeymentname }}</td>
-                        </tr>
-                    </table>
+                    <div>
+                        Umumiy sum: {{ number_format(AllPrice) }}
+                    </div>
+                    <div>
+                        Tolov turi: {{ whichOneKindOfPeymentname }}
+                    </div>
                 </div>
                 <div class="button_for_pay">
                     <button @click="TurnOffBill" style="width: 100%;">To` lov</button>
@@ -473,12 +468,13 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 1.2rem;
 }
 
 .bill_item .logo {
+    max-width: 300px;
     width: 90%;
     margin: auto;
-    height: 20%;
 }
 
 .bill_item .product_list {
@@ -503,23 +499,26 @@ export default {
 }
 
 .bill_item .button_for_pay button {
-    width: 100%;
-    height: 100%;
     border-radius: 25px;
-    background-color: #0eff06;
+    background-color: #14e922;
+    color: #fff;
+    height: 5rem;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .bill_item .payment_information {
     width: 90%;
     height: 5%;
     margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.bill_item .payment_information table {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #250091;
 }
 
 .products {
