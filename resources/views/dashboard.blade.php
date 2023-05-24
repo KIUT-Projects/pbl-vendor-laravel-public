@@ -320,7 +320,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="d-flex gap-2 justify-content-end align-items-center mb-2">
-                                <p class="mb-0">Visits</p>
+                                <p class="mb-0">{{ __('Visits')}}</p>
                                 <span class="badge bg-label-primary p-1 rounded"><i class="ti ti-link ti-xs"></i></span>
                             </div>
                             <h5 class="mb-0 pt-1 text-nowrap ms-lg-n3 ms-xl-0">25.5%</h5>
@@ -362,7 +362,7 @@
                         </span>
                     </div>
                     <h5 class="card-title mb-0 mt-2">97.5k</h5>
-                    <small>Revenue Generated</small>
+                    <small>{{ __('Revenue Generated')}}</small>
                 </div>
                 <div id="revenueGenerated"></div>
             </div>
@@ -374,8 +374,8 @@
             <div class="card h-100">
                 <div class="card-header pb-0 d-flex justify-content-between mb-lg-n4">
                     <div class="card-title mb-0">
-                        <h5 class="mb-0">Earning Reports</h5>
-                        <small class="text-muted">Weekly Earnings Overview</small>
+                        <h5 class="mb-0">{{ __('Earning Reports')}}</h5>
+                        <small class="text-muted">{{ __('Weekly Earnings Overview')}}</small>
                     </div>
                     <div class="dropdown">
                         <button
@@ -389,8 +389,8 @@
                             <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="earningReportsId">
-                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                            <a class="dropdown-item" href="javascript:void(0);">{{ __('View More')}}</a>
+                            <a class="dropdown-item" href="javascript:void(0);">{{ __('Delete')}}</a>
                         </div>
                     </div>
                     <!-- </div> -->
@@ -402,7 +402,7 @@
                                 <h1 class="mb-0">$468</h1>
                                 <div class="badge rounded bg-label-success">+4.2%</div>
                             </div>
-                            <small class="text-muted">You informed of this week compared to last week</small>
+                            <small class="text-muted">{{ __('You informed of this week compared to last week')}}</small>
                         </div>
                         <div class="col-12 col-md-8">
                             <div id="weeklyEarningReports"></div>
@@ -415,7 +415,7 @@
                                     <div class="badge rounded bg-label-primary p-1">
                                         <i class="ti ti-currency-dollar ti-sm"></i>
                                     </div>
-                                    <h6 class="mb-0">Earnings</h6>
+                                    <h6 class="mb-0">{{ __('Earnings')}}</h6>
                                 </div>
                                 <h4 class="my-2 pt-1">$545.69</h4>
                                 <div class="progress w-75" style="height: 4px">
@@ -432,7 +432,7 @@
                             <div class="col-12 col-sm-4">
                                 <div class="d-flex gap-2 align-items-center">
                                     <div class="badge rounded bg-label-info p-1"><i class="ti ti-chart-pie-2 ti-sm"></i></div>
-                                    <h6 class="mb-0">Profit</h6>
+                                    <h6 class="mb-0">{{ __('Profit')}}</h6>
                                 </div>
                                 <h4 class="my-2 pt-1">$256.34</h4>
                                 <div class="progress w-75" style="height: 4px">
@@ -451,7 +451,7 @@
                                     <div class="badge rounded bg-label-danger p-1">
                                         <i class="ti ti-brand-paypal ti-sm"></i>
                                     </div>
-                                    <h6 class="mb-0">Expense</h6>
+                                    <h6 class="mb-0">{{ __('Expense')}}</h6>
                                 </div>
                                 <h4 class="my-2 pt-1">$74.19</h4>
                                 <div class="progress w-75" style="height: 4px">
@@ -477,8 +477,8 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between pb-0">
                     <div class="card-title mb-0">
-                        <h5 class="mb-0">Support Tracker</h5>
-                        <small class="text-muted">Last 7 Days</small>
+                        <h5 class="mb-0">{{ __('Support Tracker')}}</h5>
+                        <small class="text-muted">{{ __('Last 7 Days')}}</small>
                     </div>
                     <div class="dropdown">
                         <button
@@ -492,8 +492,8 @@
                             <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="supportTrackerMenu">
-                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                            <a class="dropdown-item" href="javascript:void(0);">{{ __('View More')}}</a>
+                            <a class="dropdown-item" href="javascript:void(0);">{{ __('Delete')}}</a>
                         </div>
                     </div>
                 </div>
@@ -502,13 +502,13 @@
                         <div class="col-12 col-sm-4 col-md-12 col-lg-4">
                             <div class="mt-lg-4 mt-lg-2 mb-lg-4 mb-2 pt-1">
                                 <h1 class="mb-0">164</h1>
-                                <p class="mb-0">Total Tickets</p>
+                                <p class="mb-0">{{ __('Total Tickets')}}</p>
                             </div>
                             <ul class="p-0 m-0">
                                 <li class="d-flex gap-3 align-items-center mb-lg-3 pt-2 pb-1">
                                     <div class="badge rounded bg-label-primary p-1"><i class="ti ti-ticket ti-sm"></i></div>
                                     <div>
-                                        <h6 class="mb-0 text-nowrap">New Tickets</h6>
+                                        <h6 class="mb-0 text-nowrap">{{ __('New Tickets')}}</h6>
                                         <small class="text-muted">142</small>
                                     </div>
                                 </li>
@@ -517,15 +517,15 @@
                                         <i class="ti ti-circle-check ti-sm"></i>
                                     </div>
                                     <div>
-                                        <h6 class="mb-0 text-nowrap">Open Tickets</h6>
+                                        <h6 class="mb-0 text-nowrap">{{ __('Open Tickets')}}</h6>
                                         <small class="text-muted">28</small>
                                     </div>
                                 </li>
                                 <li class="d-flex gap-3 align-items-center pb-1">
                                     <div class="badge rounded bg-label-warning p-1"><i class="ti ti-clock ti-sm"></i></div>
                                     <div>
-                                        <h6 class="mb-0 text-nowrap">Response Time</h6>
-                                        <small class="text-muted">1 Day</small>
+                                        <h6 class="mb-0 text-nowrap">{{ __('Response Time')}}</h6>
+                                        <small class="text-muted">{{ __('1 Day')}}</small>
                                     </div>
                                 </li>
                             </ul>
