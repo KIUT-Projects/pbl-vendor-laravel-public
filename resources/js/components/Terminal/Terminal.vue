@@ -164,17 +164,18 @@ export default {
                 this.AllPrice += Number(element.price) * element.numberofProduct;
             });
         },
-        serach() {
-            if (this.serach == "") {
-                console.log(0);
-                this.products = this.product_list_for_api
-            }
-            else {
-                this.products = this.product_list_for_api
-                this.products = this.products.filter(e => e.name.search(this.search) != -1)
-                console.log(this.search.cont);
-            }
-        },
+        // serach() {
+        //     if (this.serach == "") {
+        //         console.log(0);
+        //         this.products = this.product_list_for_api
+        //     }
+        //     else {
+        //         this.products = this.product_list_for_api
+        //         this.products = this.products.filter(e => e.name.toLowerCase().search(this.search.toLowerCase()) != -1)
+        //         console.log(this.search.cont);
+        //     }
+        //     console.log(123);
+        // },
         apiPutProducts() {
             axios.post('/api/store/cart_to_order/', { cart: this.senttoapi, totalPrice: this.AllPrice, payment: this.whichOneKindOfPeymentname })
                 .then(function (response) {
@@ -185,18 +186,18 @@ export default {
                 });
         },
         apiGetProducts() {
-            product.getProducts().then((response) => {
+            product.getProducts({'search': this.search}).then((response) => {
                 if (response.data && response.data.success) {
                     //console.log('success keldi')
-                    console.log(response.data.data)
-                    //if()
+                    // console.log(response.data.data)
                     // this.product_list_for_api = response.data.data;
-                    // this.products = this.product_list_for_api;
+                    // this.products = this.product_list_for_ap
                     this.products = response.data.data
                 } else {
                     console.log(response.data)
                 }
             })
+            console.log('api get product');
         },
 
         addToCart(id) {
@@ -372,7 +373,7 @@ export default {
                         </div>
                         <input type="text"
                             class="rounded-lg bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none"
-                            placeholder="Qidiruv ..." @input="this.serach" v-model="search">
+                            placeholder="Qidiruv ..." @input="apiPutProducts" v-model="this.search">
                     </div>
                     <div class="h-full overflow-hidden mt-4">
                         <div class="h-full overflow-y-auto px-2">
