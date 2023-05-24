@@ -12,9 +12,14 @@ class ProductController extends BaseController
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::query()->with(['brand', 'category', 'supplier', 'user'])->get();
+        if ($request->has('search')){
+            $products = Product::query()->where('name', 'LIKE', "%$request->search%")->with(['brand', 'category', 'supplier', 'user'])->get();
+        }else{
+            $products = Product::query()->with(['brand', 'category', 'supplier', 'user'])->get();
+        }
+
         return $this->sendResponse(ProductResource::collection($products), 'Products retrieved successfully.');
     }
 
