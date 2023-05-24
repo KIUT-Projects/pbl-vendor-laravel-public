@@ -17,8 +17,8 @@ return new class extends Migration
             $table->integer('role_id');
             $table->string('last_ip', 120)->nullable();
             $table->timestamp('last_active')->default(now());
-            $table->boolean('deleted')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

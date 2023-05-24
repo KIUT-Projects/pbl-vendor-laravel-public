@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name', 30);
             $table->longText('permissions')->nullable();
             $table->boolean('status')->default(1);
-            $table->boolean('deleted')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

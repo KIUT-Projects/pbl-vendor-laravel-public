@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('quantity')->default(1);
             $table->double('price')->default(0);
             $table->text('variation')->nullable();
-            $table->boolean('deleted')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

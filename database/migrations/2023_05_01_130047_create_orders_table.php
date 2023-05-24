@@ -23,8 +23,8 @@ return new class extends Migration
             $table->double('total_price')->default('0');
             $table->string('payment_method')->default('cash');
             $table->boolean('status')->default(1);
-            $table->boolean('deleted')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

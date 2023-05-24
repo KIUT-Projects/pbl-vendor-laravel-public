@@ -18,25 +18,16 @@ class LanguageSeeder extends Seeder
                 'name' => "English",
                 'code' => "en",
                 'status' => true,
-                'deleted' => false,
-                'created_at' => now(),
-                'updated_at' => now()
             ],
             [
                 'name' => "Russian",
                 'code' => "ru",
                 'status' => true,
-                'deleted' => false,
-                'created_at' => now(),
-                'updated_at' => now()
             ],
             [
                 'name' => "Uzbek",
                 'code' => "uz",
                 'status' => true,
-                'deleted' => false,
-                'created_at' => now(),
-                'updated_at' => now()
             ]
         ]);
     }

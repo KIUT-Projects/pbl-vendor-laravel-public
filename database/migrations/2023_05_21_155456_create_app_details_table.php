@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_notes', function (Blueprint $table) {
+        Schema::create('app_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('order_id');
-            $table->integer('reply_id')->nullable();
-            $table->mediumText('note')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_notes');
+        Schema::dropIfExists('app_details');
     }
 };
