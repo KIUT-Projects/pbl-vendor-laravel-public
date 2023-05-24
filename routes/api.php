@@ -22,19 +22,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('product')->group(function (){
     Route::post('/all', [ProductController::class, 'index']);
     Route::post('/search', [ProductController::class, 'products_search']);
-    Route::post('/by_category', [ApiController::class, 'product_by_category']);
-    Route::post('/id/{id}', [ApiController::class, 'product_by_id']);
+    Route::post('/by_category', [ProductController::class, 'product_by_category']);
+    Route::post('/id/{id}', [ProductController::class, 'product_by_id']);
 });
 Route::prefix('brand')->group(function (){
-    Route::post('/all', [ApiController::class, 'brands']);
+    Route::post('/all', [ProductController::class, 'brands']);
 });
 Route::prefix('customer')->group(function (){
-    Route::post('/all', [ApiController::class, 'customers']);
+    Route::post('/all', [ProductController::class, 'customers']);
 });
 
-Route::post('/category', [ApiController::class, 'brand_all']);
+Route::post('/category', [ProductController::class, 'brand_all']);
 
-Route::any('/products', [ApiController::class, 'products']);
-Route::any('/products/search', [ApiController::class, 'all']);
-Route::any('/brands', [ApiController::class, 'brand']);
-Route::any('/store/cart_to_order', [ApiController::class, 'storeCartToOrder']);
+Route::any('/products', [ProductController::class, 'products']);
+Route::any('/products/search', [ProductController::class, 'all']);
+Route::any('/brands', [ProductController::class, 'brand']);
+Route::any('/store/cart_to_order', [ProductController::class, 'storeCartToOrder']);

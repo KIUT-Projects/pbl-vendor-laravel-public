@@ -185,8 +185,10 @@ export default {
         },
         apiGetProducts() {
             product.getProducts().then((response) => {
-                if (response.data) {
-                    //console.log(response.data)
+                if (response.data && response.data.success) {
+                    //console.log('success keldi')
+                    console.log(response.data.data)
+                    //if()
                     // this.product_list_for_api = response.data.data;
                     // this.products = this.product_list_for_api;
                     this.products = response.data.data
@@ -375,7 +377,7 @@ export default {
                         </div>
                         <input type="text"
                             class="rounded-lg bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none"
-                            placeholder="Search ..." @input="this.serach" v-model="search">
+                            placeholder="Qidiruv ..." @input="this.serach" v-model="search">
                     </div>
                     <div class="h-full overflow-hidden mt-4">
                         <div class="h-full overflow-y-auto px-2">
@@ -416,7 +418,7 @@ export default {
                                     :title="product.name" v-if="products" v-for="(product, index) in products" :key="index"
                                     :product="product">
                                     <p class="mt-2 ml-2">{{ product.current_stock }} ta</p>
-                                    <img :src="'/' + product.image ?? '/theme/terminal/beef-burger.png'"
+                                    <img :src="product.image ?? '/theme/terminal/beef-burger.png'"
                                         :alt="product.name">
                                     <div class="flex pb-3 px-3 text-sm -mt-3">
                                         <p class="flex-grow truncate mr-1">{{ product.name }}</p>
