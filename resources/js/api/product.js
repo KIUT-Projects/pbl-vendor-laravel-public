@@ -7,7 +7,7 @@ class product {
         if(data.query){
             return http.post('/product/search', data);
         }
-        return http.post('/product/all', data);
+        return http.post('api/product/all', data);
     }
 
     searchProducts(data = {}){

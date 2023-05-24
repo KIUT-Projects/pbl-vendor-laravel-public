@@ -41,12 +41,15 @@ export default {
             },
             choseProducts: [],
             products: [],
+            product_list_for_api: [],
             numberOfProducts: 0,
             AllPrice: 0,
             whichOneKindOfPeymentname: "Naqt pul",
             senttoapi: [],
             billNumber: 123123,
             bill_date: Date.now(),
+            select_customer: '',
+            search: "",
         }
     },
     computed: {
@@ -77,10 +80,12 @@ export default {
         TurnOffBill() {
             let bill = document.querySelector('#bill');
             bill.style.zIndex = "1";
+            console.log(this.select_customer);
             this.generatePDF();
             this.ProductsWhichSentToApi();
             this.apiPutProducts()
             this.Clear();
+            // this.apiGetProducts();
         },
         generatePDF() {
             const element = this.$refs.pdfContent;
@@ -125,6 +130,7 @@ export default {
                 this.choseProducts.push(product);
             }
             this.ProductsWhichSentToApi();
+            console.log(product);
         },
         ProductsWhichSentToApi() {
             this.senttoapi = [];
@@ -157,8 +163,19 @@ export default {
                 this.AllPrice += Number(element.price) * element.numberofProduct;
             });
         },
+        serach() {
+            if (this.serach == "") {
+                console.log(0);
+                this.products = this.product_list_for_api
+            }
+            else {
+                this.products = this.product_list_for_api
+                this.products = this.products.filter(e => e.name.search(this.search) != -1)
+                console.log(this.search.cont);
+            }
+        },
         apiPutProducts() {
-            axios.post('/api/store/cart_to_order/', {cart: this.senttoapi,totalPrice:this.AllPrice,payment: this.whichOneKindOfPeymentname})
+            axios.post('/api/store/cart_to_order/', { cart: this.senttoapi, totalPrice: this.AllPrice, payment: this.whichOneKindOfPeymentname })
                 .then(function (response) {
                     console.log(response);
                 })
@@ -170,6 +187,8 @@ export default {
             product.getProducts().then((response) => {
                 if (response.data) {
                     //console.log(response.data)
+                    // this.product_list_for_api = response.data.data;
+                    // this.products = this.product_list_for_api;
                     this.products = response.data.data
                 } else {
                     console.log(response.data)
@@ -296,7 +315,7 @@ export default {
                 </div>
                 <div class="bill_information">
                     <p>#{{ billNumber }}</p>
-                    <section><option value="" v-for="(item, index) in items" :key="index"></option></section>
+                    <!-- <select class="selectForcustomers" v-model="select_customer"><option value="customer">Customer</option> <option value="customer2">cusremer2</option></select> -->
                     <p>{{ formattedDateTime }}</p>
                 </div>
                 <div class="product_list">
@@ -356,7 +375,7 @@ export default {
                         </div>
                         <input type="text"
                             class="rounded-lg bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none"
-                            placeholder="Search ..." v-model="search">
+                            placeholder="Search ..." @input="this.serach" v-model="search">
                     </div>
                     <div class="h-full overflow-hidden mt-4">
                         <div class="h-full overflow-y-auto px-2">
@@ -396,6 +415,7 @@ export default {
                                     class="select-none cursor-pointer transition-shadow overflow-hidden rounded-2xl bg-white shadow hover:shadow-lg"
                                     :title="product.name" v-if="products" v-for="(product, index) in products" :key="index"
                                     :product="product">
+                                    <p class="mt-2 ml-2">{{ product.current_stock }} ta</p>
                                     <img :src="'/' + product.image ?? '/theme/terminal/beef-burger.png'"
                                         :alt="product.name">
                                     <div class="flex pb-3 px-3 text-sm -mt-3">
@@ -515,5 +535,10 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.selectForcustomers {
+    width: 100px;
+    height: 20px;
 }
 </style>

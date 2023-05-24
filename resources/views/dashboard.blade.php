@@ -43,7 +43,7 @@
             <div class="card">
               <div class="card-body d-flex justify-content-between align-items-center">
                 <div class="card-title mb-0">
-                  <h5 class="mb-0 me-2">{{ \App\Models\Brand::count() }} <b>+{{ \App\Models\Brand::whereDate('created_at', today())->count() }}</b></h5>
+                    <h5 class="mb-0 me-2">{{ \App\Models\Brand::count() }} <b>+{{ \App\Models\Brand::whereDate('created_at', today())->count() }}</b></h5>
                   <small>{{ __('Brands') }}</small>
                 </div>
                 <div class="card-icon">
