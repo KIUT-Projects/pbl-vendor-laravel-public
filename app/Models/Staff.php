@@ -10,6 +10,6 @@ class Staff extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [];
+    protected $fillable = ['user_id','role_id','last_ip','last_active'];
 
 }
