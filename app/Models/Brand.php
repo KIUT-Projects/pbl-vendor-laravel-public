@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Brand extends Model
 {
-    use HasFactory;
-    protected $guarded = [];
-    protected $table = 'brands';
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = ['user_id', 'name', 'slug', 'image', 'status'];
 
     public function user(): BelongsTo
     {
