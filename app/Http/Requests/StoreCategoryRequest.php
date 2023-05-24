@@ -22,14 +22,13 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'order_id' => 'required|integer|max:100',
-            'image' => 'nullable|image|max:255',
-            'icon' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:2048',
+            'icon' => 'nullable|image|max:2048',
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255',
             'level' => 'nullable|integer',
             'parent_id' => 'nullable|integer',
-            'deleted'=> 'boolean',
+
         ];
     }
 }

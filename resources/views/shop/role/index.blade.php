@@ -50,8 +50,7 @@
                 <tr>
                     <th>{{ __('ID') }}</th>
                     <th>{{ __('Name') }}</th>
-                    <th>{{ __('Permissions') }}</th>
-{{--                    <th>{{ __('Author') }}</th>--}}
+<!--                    <th>{{ __('Permissions') }}</th>-->
                     <th>{{ __('Status') }}</th>
                     <th>{{ __('Created at') }}</th>
                     <th>{{ __('Actions') }}</th>
@@ -66,9 +65,9 @@
                     <td>
                         <a href="{{ route('role.show', $role->id) }}">{{ $role->name }}</a>
                     </td>
-                    <td>
-                        {{ $role?->permissions ?? __('Empty') }}
-                    </td>
+<!--                    <td>
+{{--                        {{ $role?->permissions ?? __('Empty') }}--}}
+                    </td>-->
 {{--                    <td>--}}
 {{--                        {{ $role->user?->name ?? __('Empty') }}--}}
 {{--                    </td>--}}

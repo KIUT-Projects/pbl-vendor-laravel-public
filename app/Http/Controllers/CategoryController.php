@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Product;
+use http\Client\Curl\User;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -34,6 +35,7 @@ class CategoryController extends Controller
 
     {
         $category = new Category();
+        $category->user_id=auth()->id();
         if($request->has('image')){
             $image = $request->file('image')->storeAs(
                 'public/category/images', Str::random('32').'.'.$request->file('image')->extension()
@@ -61,7 +63,7 @@ class CategoryController extends Controller
 
         }
         $category->name = $request->name;
-        $category->slug = Str::slug($category->title);
+        $category->slug = Str::slug($request->name);
         $category->save();
 
         return redirect()->route('category.index');
