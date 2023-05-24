@@ -17,7 +17,7 @@
             <div class="nav-item navbar-search-wrapper mb-0">
                 <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
                     <i class="ti ti-search ti-md me-2"></i>
-                    <span class="d-none d-md-inline-block text-muted">{{ __('Search') }}... (Ctrl+/)</span>
+                    <span class="d-none d-md-inline-block text-muted">{{ __('Search') }}...</span>
                 </a>
             </div>
         </div>
@@ -27,7 +27,13 @@
             <!-- Language -->
             <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <i class="fi fi-{{ env('APP_LOCALE', app()->currentLocale()) == 'en' ? 'us' : env('APP_LOCALE', app()->currentLocale()) }} fis rounded-circle me-1 fs-3"></i>
+                    @php
+                        $language = app()->currentLocale() ?? env('APP_LOCALE', app()->currentLocale());
+                        if($language == 'en'){
+                            $language = 'us';
+                        }
+                    @endphp
+                    <i class="fi fi-{{ $language }} fis rounded-circle me-1 fs-3"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     @foreach($languages as $language)
