@@ -454,21 +454,23 @@
                 <div class="ftco-footer-widget mb-4 ml-md-4">
                     <h2 class="ftco-heading-2">Links</h2>
                     <ul class="list-unstyled">
-                    <li><a href="#"></span>Bosh sahifa</a></li>
-                        <li><a href="#"></span>Dastur haqida</a></li>
-                        <li><a href="#"></span>Bo'limlar</a></li>
-                        <li><a href="#"></span>Izohlar</a></li>
-                        <li><a href="#"></span>Kontakt</a></li>
+                    <li><a href="#">Bosh sahifa</a></li>
+                        <li><a href="#">Dastur haqida</a></li>
+                        <li><a href="#">Bo'limlar</a></li>
+                        <li><a href="#">Izohlar</a></li>
+                        <li><a href="#">Kontakt</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Hizmatlar</h2>
+                    <h2 class="ftco-heading-2">Xizmatlar</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#"></span>Qo'llanma</a></li>
-                        <li><a href="#"></span>Marketing</a></li>
-                        <li><a href="#"></span>Admin panel</a></li>
+                        <li><a href="https://vender.gougo.uz/">Onlayn versiya</a></li>
+                        <li><a href="https://github.com/KIUT-Projects/pbl-vendor-laravel">Github</a></li>
+                        <li><a href="https://dbdiagram.io/d/6406330c296d97641d85d802">Database (dbdiagram)</a></li>
+                        <li><a href="https://www.canva.com/design/DAFjBATsCCA/LX_nl7WNfbQtdUZ78I-Iaw/view">Taqdimot</a></li>
+                        <li><a href="https://drive.google.com/file/d/1AhkA8OekIn_Vab_SeA6yYquDUfjA7cGX/view">Dokument</a></li>
                     </ul>
                 </div>
             </div>
