@@ -120,7 +120,7 @@ export default{
                   </template>
 
                   <div v-for="(item,index) in choseProducts" class="select-none mb-3 bg-blue-gray-50 rounded-lg w-full text-blue-gray-700 py-2 px-2 flex justify-center">
-                  <img :src="item.image" alt="" class="rounded-lg h-10 w-10 bg-white shadow mr-2" src="img/sawarma.png">
+                  <img :src="item.image" alt="" class="rounded-lg h-10 w-10 bg-white shadow mr-2">
                   <div class="flex-grow">
                     <h5 class="text-sm" x-text="item.name">{{ item.name }}</h5>
                     <p class="text-xs block" x-text="priceFormat(item.price)">{{number_format(item.price) }}</p>

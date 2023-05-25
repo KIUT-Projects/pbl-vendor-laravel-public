@@ -6,7 +6,7 @@
     <div class="flex flex-row w-auto flex-shrink-0 pl-4 pr-2 py-4">
         <div class="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-cyan-500 rounded-3xl" style="background: linear-gradient(72.47deg, #7367f0 22.16%, rgba(115, 103, 240, 0.7) 76.47%);">
             <a class="flex items-center justify-center h-12 w-12 bg-cyan-50 text-cyan-700 rounded-full" href="/admin">
-                <img src="/assets/faicon/apple-touch-icon.png" style="border-radius: 10px;">
+                <img src="/public/assets/faicon/apple-touch-icon.png" style="border-radius: 10px;">
             </a>
             <ul class="flex flex-col space-y-2 mt-12">
                 <li>
