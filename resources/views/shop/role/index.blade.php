@@ -50,7 +50,7 @@
                 <tr>
                     <th>{{ __('ID') }}</th>
                     <th>{{ __('Name') }}</th>
-<!--                    <th>{{ __('Permissions') }}</th>-->
+<!--                <th>{{ __('Permissions') }}</th>-->
                     <th>{{ __('Status') }}</th>
                     <th>{{ __('Created at') }}</th>
                     <th>{{ __('Actions') }}</th>
