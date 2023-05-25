@@ -24,7 +24,7 @@ Route::prefix('v1')->group(function () {
     });
 
     // Routes for auth users
-    Route::middleware('auth:sanctum')->group(function (){
+    //Route::middleware('auth:sanctum')->group(function (){
         Route::prefix('product')->group(function (){
             Route::post('/all', [ProductController::class, 'index']);
             Route::post('/search', [ProductController::class, 'products_search']);
@@ -46,10 +46,10 @@ Route::prefix('v1')->group(function () {
         });
 
         // Error Page
-        Route::any('{segment}', function () {
+        /*Route::any('{segment}', function () {
             return response()->json(['success' => false, 'data' => [], 'message' => 'Bad request.'], 400);
-        })->where('segment', '.*');
-    });
+        })->where('segment', '.*');*/
+    //});
 
     // Old API
     Route::any('/products/all', [ProductController::class, 'index']);
