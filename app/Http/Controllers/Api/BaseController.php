@@ -8,9 +8,7 @@ use Illuminate\Http\JsonResponse;
 class BaseController extends Controller
 {
     /**
-     * success response method.
-     *
-     * @return JsonResponse
+     * Success response method.
      */
     public function sendResponse($result, $message): JsonResponse
     {
@@ -26,7 +24,7 @@ class BaseController extends Controller
 
 
     /**
-     * return error response.
+     * Return error response.
      *
      * @return JsonResponse
      */
