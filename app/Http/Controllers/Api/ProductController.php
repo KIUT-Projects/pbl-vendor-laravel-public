@@ -13,15 +13,14 @@ class ProductController extends BaseController
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
-        (int) $per_page = $request->per_page ?? 2;
+        (int) $per_page = $request->per_page ?? 24;
 
         if ($request->has('search')){
             $products = Product::query()->where('name', 'LIKE', "%$request->search%")
                 ->orWhere('barcode', 'LIKE', "%$request->search%")
-                ->with(['brand', 'category', 'supplier', 'user'])
-                ->paginate($per_page);
+                ->with(['brand', 'category', 'supplier', 'user'])->paginate($per_page);
         }else{
             $products = Product::query()->with(['brand', 'category', 'supplier', 'user'])->paginate($per_page);
         }

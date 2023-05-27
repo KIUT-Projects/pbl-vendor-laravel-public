@@ -1,7 +1,17 @@
 <?php
 
+use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CurrencyController;
+use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\LanguageController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\StaffController;
+use App\Http\Controllers\Api\SupplierController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,25 +35,17 @@ Route::prefix('v1')->group(function () {
 
     // Routes for auth users
     Route::middleware('auth:sanctum')->group(function (){
-        Route::prefix('product')->group(function (){
-            Route::post('/all', [ProductController::class, 'index']);
-            Route::post('/search', [ProductController::class, 'products_search']);
-            Route::post('/by_category', [ProductController::class, 'product_by_category']);
-            Route::post('/id/{id}', [ProductController::class, 'product_by_id']);
-        });
-        Route::prefix('brand')->group(function (){
-            Route::post('/all', [ProductController::class, 'brands']);
-        });
-        Route::prefix('customer')->group(function (){
-            Route::post('/all', [ProductController::class, 'customers']);
-        });
-
-        Route::post('/category', [ProductController::class, 'brand_all']);
-        Route::any('/products/search', [ProductController::class, 'all']);
-        Route::any('/brands', [ProductController::class, 'brand']);
-        Route::get('/user', function (Request $request) {
-            return $request->user();
-        });
+        Route::apiResource('product', ProductController::class);
+        Route::apiResource('brand', BrandController::class);
+        Route::apiResource('category', CategoryController::class);
+        Route::apiResource('order', OrderController::class);
+        Route::apiResource('currency', CurrencyController::class);
+        Route::apiResource('language', LanguageController::class);
+        Route::apiResource('customer', CustomerController::class);
+        Route::apiResource('role', RoleController::class);
+        Route::apiResource('staff', StaffController::class);
+        Route::apiResource('supplier', SupplierController::class);
+        Route::apiResource('user', UserController::class);
 
         // Error Page
         Route::any('{segment}', function () {
