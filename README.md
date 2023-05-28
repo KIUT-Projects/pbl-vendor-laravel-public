@@ -5,6 +5,9 @@
 ## About Porject
 > Some information ...
 
+## Online version
+[>> VENDER.GOUGO.UZ <<](https://vender.gougo.uz/)
+
 ## Requirements
 - PHP ^8.0.2
 - Composer 2
@@ -78,7 +81,7 @@ npm run dev
 
 ## Database Diagram:
 ![Database](.github/images/database.png)
-- https://dbdiagram.io/d/63f70bb7296d97641d831ebd
+- https://dbdiagram.io/d/6406330c296d97641d85d802
 
 ## Screenshots
 ![Github](.github/images/github-1.png)
