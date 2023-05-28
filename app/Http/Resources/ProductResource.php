@@ -2,15 +2,11 @@
 
 namespace App\Http\Resources;
 
-use AllowDynamicProperties;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
 {
-    protected bool $relation = true;
-
     /**
      * Transform the resource collection into an array.
      *

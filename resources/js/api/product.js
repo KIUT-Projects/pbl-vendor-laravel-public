@@ -4,7 +4,7 @@ class product {
 
     // PAGES
     getProducts(data = {}){
-        return http.post('/product/all', data);
+        return http.get('/product', data);
     }
 
     searchProducts(data = {}){

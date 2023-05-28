@@ -2,26 +2,26 @@ import axios from "axios";
 
 export default axios.create({
     //baseURL: process.env.MIX_BASE_API_URL,
-    baseURL: '/api',
+    baseURL: '/api/v1',
     headers: {
-        //"Authorization": "Bearer " + process.env.MIX_ACCESS_TOKEN,
-        "Content-type": "application/json",
+        Accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
     }
 });
 
 export function request(method, url, data = {}) {
-    console.log(url);
     return fetch(url, {
         method,
         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            //"Authorization": "Bearer " + process.env.MIX_ACCESS_TOKEN,
-            'X-CSRF-TOKEN': document.head.querySelector('meta[name=csrf-token]').content
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+            Accept: 'application/json',
+            //Authorization: `Bearer 2|K8xuWt5UtljFodkDNi93Gpk85mREWU43pTepatit`,
+            //'Content-Type': 'application/json',
+            // + process.env.MIX_API_TOKEN,
+            //'X-CSRF-TOKEN': document.head.querySelector('meta[name=csrf-token]').content
         },
         ...(method === 'get' ? {}: {body: JSON.stringify(data)})
     }).then(async (response) => {
+
         if (response.status >=200 && response.status <300) {
             return response.json()
         }
@@ -30,6 +30,7 @@ export function request(method, url, data = {}) {
 }
 
 export function get(url, data = {}) {
+    console.log(import.meta.env.VITE_APP_AVITE_API_TOKENPI_KEY);
     return request('get', url, data)
 }
 

@@ -191,12 +191,10 @@ export default {
         },
         apiGetProducts() {
             product.getProducts({'search': this.search}).then((response) => {
-                if (response.data && response.data.success) {
-                    //console.log('success keldi')
-                    // console.log(response.data.data)
-                    // this.product_list_for_api = response.data.data;
-                    // this.products = this.product_list_for_ap
-                    this.products = response.data.data
+                //console.log(response.data)
+                if (response.data.success) {
+                    console.log(response.data.data.data)
+                   this.products = response.data.data.data
                 } else {
                     console.log(response.data)
                 }
