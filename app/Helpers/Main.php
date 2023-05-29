@@ -55,4 +55,19 @@ if (! function_exists('price')) {
     }
 }
 
+if (! function_exists('setEnv')) {
+    function setEnv($key, $value): void
+    {
+        $path = app()->environmentFilePath();
+
+        $escaped = preg_quote('='.env($key), '/');
+
+        file_put_contents($path, preg_replace(
+            "/^{$key}{$escaped}/m",
+            "{$key}={$value}",
+            file_get_contents($path)
+        ));
+    }
+}
+
 require_once 'Statistics.php';

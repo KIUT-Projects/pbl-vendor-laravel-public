@@ -16,25 +16,29 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-    // Ecommerce
     Route::get('order/terminal', [OrderController::class, 'terminal'])->name('order.terminal');
-    //Route::get('order/terminal/tailwind', [OrderController::class, 'terminal2'])->name('order.terminal.tailwind');
-    Route::resource('order', OrderController::class);
-    Route::resource('order_note', OrderNoteController::class);
-    Route::resource('order_item', OrderItemController::class);
 
-    Route::resource('product', ProductController::class);
-    Route::resource('category', CategoryController::class);
-    Route::resource('brand', BrandController::class);
-    Route::resource('supplier', SupplierController::class);
+    Route::middleware(['staff'])->group(function () {
 
-    // User and Members
-    Route::resource('customer', CustomerController::class);
-    Route::resource('role', RoleController::class);
-    Route::resource('staff', StaffController::class);
-    Route::resource('user', UserController::class);
+        Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+        // Ecommerce
+        //Route::get('order/terminal/tailwind', [OrderController::class, 'terminal2'])->name('order.terminal.tailwind');
+        Route::resource('order', OrderController::class);
+        Route::resource('order_note', OrderNoteController::class);
+        Route::resource('order_item', OrderItemController::class);
 
+        Route::resource('product', ProductController::class);
+        Route::resource('category', CategoryController::class);
+        Route::resource('brand', BrandController::class);
+        Route::resource('supplier', SupplierController::class);
+
+        // User and Members
+        Route::resource('customer', CustomerController::class);
+        Route::resource('role', RoleController::class);
+        Route::resource('staff', StaffController::class);
+        Route::resource('user', UserController::class);
+
+    });
 });

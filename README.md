@@ -1,9 +1,12 @@
-# PBL Vendor Project
-
+![Logo](.github/images/logo.png)
 ![Screen 1](.github/images/screen-1.png)
+# PBL Vendor Project
 
 ## About Porject
 > Some information ...
+
+## Online version
+[>> VENDER.GOUGO.UZ <<](https://vender.gougo.uz/)
 
 ## Requirements
 - PHP ^8.0.2
@@ -21,18 +24,22 @@
 
 ## Install guide
 
+Composer install
 ```shell
 composer install
 ```
 
+NPM install
 ```shell
 npm install
 ```
 
+Generate new key
 ```shell
 php artisan key:generate
 ```
 
+Make storage folder to public
 ```shell
 php artisan storage:link
 ```
@@ -47,12 +54,19 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
+Clear all cache, config files
 ```shell
 php artisan optimize:clear
 ```
 
+Drop table and create new, + seeder
 ```shell
 php artisan migrate:fresh --seed
+```
+
+Generate API for Vue usage
+```shell
+php artisan api:token
 ```
 
 Run Laravel server
@@ -67,14 +81,21 @@ npm run dev
 
 ## Database Diagram:
 ![Database](.github/images/database.png)
-- https://dbdiagram.io/d/63f70bb7296d97641d831ebd
+- https://dbdiagram.io/d/6406330c296d97641d85d802
 
 ## Screenshots
-![Login Page](.github/images/login.png)
-![Register Page](.github/images/register.png)
-![Forgot Page](.github/images/forgot.png)
+![Github](.github/images/github-1.png)
+![Github](.github/images/github-2.png)
+![Screen 1](.github/images/screen-1.png)
 ![Screen 2](.github/images/screen-2.png)
 ![Screen 3](.github/images/screen-3.png)
+![Screen 4](.github/images/screen-4.png)
+![Screen 5](.github/images/screen-5.png)
+![Screen 6](.github/images/screen-6.png)
+![Screen 7](.github/images/screen-7.png)
+![Screen 8](.github/images/screen-8.png)
+![Screen 9](.github/images/screen-9.png)
+![Screen 10](.github/images/screen-10.png)
 
 
 ## Used articles
@@ -91,7 +112,7 @@ npm run dev
 - ISE-51U - Umarov Kamoliddin ([@UzSoftic](https://github.com/uzsoftic))
 - ISE-51U - Abdukhamidov Abdurakhmon ([@AbdurakhmonAbdukhamidov](https://github.com/AbdurakhmonAbdukhamidov))
 - ISE-51U - Zokirov Hojiakbar ([@Khojiakbar07](https://github.com/Khojiakbar07))
-- ISE-51U - Rajabboyev Inoyatulla ([@uz-developer](https://github.com/uz-developer))
+- ISE-52U - Rajabboyev Inoyatulla ([@uz-developer](https://github.com/uz-developer))
 
 ## Versions
 - v0.1 - Pre release

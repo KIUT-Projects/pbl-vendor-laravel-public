@@ -14,33 +14,30 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        //return parent::toArray($request);
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'slug' => $this->slug,
-            'user_id' => $this->user_id,
-            'category_id' => $this->category_id,
-            'brand_id' => $this->brand_id,
-            'supplier_id' => $this->supplier_id,
-            'current_stock' => $this->current_stock,
-            'barcode' => $this->barcode,
-            'featured' => $this->featured,
+            'id' => (int) $this->id,
+            'name' => (string) $this->name,
+            'slug' => (string) $this->slug,
+            'user_id' => (int) $this->user_id,
+            'category_id' => (int) $this->category_id,
+            'brand_id' => (int) $this->brand_id,
+            'supplier_id' => (int) $this->supplier_id,
+            'current_stock' => (int) $this->current_stock,
+            'barcode' => (int) $this->barcode,
+            'featured' => (bool) $this->featured,
             'description' => $this->description,
             'short_description' => $this->short_description,
-            'price' => $this->price,
-            'price_additional' => $this->price_additional,
-            'discount' => $this->discount,
-            'discount_type' => $this->discount_type,
-            'tax' => $this->tax,
-            'tax_type' => $this->tax_type,
+            'price' => (double) $this->price,
+            'price_additional' => (string) $this->price_additional,
+            'discount' => (double) $this->discount,
+            'discount_type' => (string) $this->discount_type,
+            'tax' => (double) $this->tax,
+            'tax_type' => (string) $this->tax_type,
             'image' => asset($this->image),
             'gallery' => $this->gallery,
-            'tags' => $this->tags,
-            'attributes' => $this->attributes,
-            'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'tags' => (string) $this->tags,
+            'attributes' => (string) $this->attributes,
+            'status' => (bool)$this->status,
             'child' => [
                 'user' => new UserResource($this->user),
                 'category' => new CategoryResource($this->category),
@@ -49,4 +46,5 @@ class ProductResource extends JsonResource
             ]
         ];
     }
+
 }

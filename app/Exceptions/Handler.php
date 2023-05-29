@@ -24,14 +24,14 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            //
+
         });
     }
 
     protected function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
+            return response()->json(['success' => false, 'message' => 'Route not found. '.$exception->getMessage()], 401);
         }
         return redirect()->guest(('login'));
     }

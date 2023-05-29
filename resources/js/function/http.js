@@ -2,26 +2,21 @@ import axios from "axios";
 
 export default axios.create({
     //baseURL: process.env.MIX_BASE_API_URL,
-    baseURL: '/api',
+    baseURL: '/api/v1',
     headers: {
-        //"Authorization": "Bearer " + process.env.MIX_ACCESS_TOKEN,
-        "Content-type": "application/json",
+        Accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
     }
 });
 
 export function request(method, url, data = {}) {
-    console.log(url);
+
     return fetch(url, {
         method,
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            //"Authorization": "Bearer " + process.env.MIX_ACCESS_TOKEN,
-            'X-CSRF-TOKEN': document.head.querySelector('meta[name=csrf-token]').content
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        ...(method === 'get' ? {}: {body: JSON.stringify(data)})
+        headers: { Accept: 'application/json' },
+        body: JSON.stringify(data),
     }).then(async (response) => {
+
         if (response.status >=200 && response.status <300) {
             return response.json()
         }
@@ -29,7 +24,7 @@ export function request(method, url, data = {}) {
     })
 }
 
-export function get(url, data = {}) {
+export function get(url, data) {
     return request('get', url, data)
 }
 

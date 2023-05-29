@@ -29,6 +29,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = auth()->user();
+
+        if ($user->user_type == 'casher'){
+            return redirect()->intended(route('order.terminal'));
+        }
+
         return redirect()->intended(route('dashboard'));
     }
 

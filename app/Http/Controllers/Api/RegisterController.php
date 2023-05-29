@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\API\BaseController;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\API\BaseController;
 
 class RegisterController extends BaseController
 {
     /**
      * Register api
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function register(Request $request): JsonResponse
     {
@@ -41,7 +42,7 @@ class RegisterController extends BaseController
     /**
      * Login api
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function login(Request $request): JsonResponse
     {
@@ -53,7 +54,7 @@ class RegisterController extends BaseController
             return $this->sendResponse($success, 'User login successfully.');
         }
         else{
-            return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
+            return $this->sendError('Unauthenticated.'); // true Unauthenticated
         }
     }
 }

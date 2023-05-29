@@ -3,16 +3,16 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Service\ShellCommand;
+use Illuminate\Support\Facades\Auth;
 
-class GlobalMigrateCommand extends Command
+class ApiTokenCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'm';
+    protected $signature = 'api:token';
 
     /**
      * The console command description.
@@ -21,20 +21,15 @@ class GlobalMigrateCommand extends Command
      */
     protected $description = 'Command description';
 
-    public $commands = [
-        'php artisan optimize:clear',
-        'php artisan migrate:fresh --seed',
-        'php artisan api:token',
-    ];
-
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        foreach($this->commands as $command){
-            $this->line($command);
-            ShellCommand::execute($command);
+        if(Auth::attempt(['email' => env('ADMIN_MAIL'), 'password' => env('ADMIN_PASS')])){
+            $user = Auth::user();
+            $token =  $user->createToken('MyApp')->plainTextToken;
+            setEnv('API_TOKEN', $token);
         }
     }
 }

@@ -3,8 +3,9 @@ import Product from "@/components/Terminal/Part/Product.vue";
 import LeftSidebar from "@/components/Terminal/Part/LeftSidebar.vue";
 import RightSidebar from "@/components/Terminal/Part/RightSidebar.vue";
 import product from "@/api/product";
-import moment from 'moment';
+import order from "@/api/order";
 import html2canvas from 'html2canvas';
+import moment from 'moment';
 import jsPDF from 'jspdf'
 
 export default {
@@ -181,23 +182,35 @@ export default {
         //     console.log(123);
         // },
         apiPutProducts() {
-            axios.post('/api/store/cart_to_order/', { cart: this.senttoapi, totalPrice: this.AllPrice, payment: this.whichOneKindOfPeymentname })
+            let cart_data = {
+                cart: this.senttoapi,
+                totalPrice: this.AllPrice,
+                payment: this.whichOneKindOfPeymentname
+            }
+            order.storeOrder(cart_data).then((response) => {
+                if (response.data) {
+                    console.log(response.data)
+                    //this.products = response.data.data.data
+                } else {
+                    console.log(response.data)
+                }
+            });
+            /*axios.post('/api/store/cart_to_order/', { cart: this.senttoapi, totalPrice: this.AllPrice, payment: this.whichOneKindOfPeymentname })
                 .then(function (response) {
                     console.log(response);
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
+                });*/
         },
         apiGetProducts() {
             product.getProducts({'search': this.search}).then((response) => {
-                if (response.data && response.data.success) {
-                    //console.log('success keldi')
-                    // console.log(response.data.data)
-                    // this.product_list_for_api = response.data.data;
-                    // this.products = this.product_list_for_ap
-                    this.products = response.data.data
+                //console.log(response.data)
+                if (response.data.success) {
+                    console.log('succ')
+                   this.products = response.data.data.data
                 } else {
+                    console.log('error')
                     console.log(response.data)
                 }
             })
