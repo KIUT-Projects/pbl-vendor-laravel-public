@@ -169,18 +169,18 @@ export default {
                 this.AllPrice += Number(element.price) * element.numberofProduct;
             });
         },
-        // serach() {
-        //     if (this.serach == "") {
-        //         console.log(0);
-        //         this.products = this.product_list_for_api
-        //     }
-        //     else {
-        //         this.products = this.product_list_for_api
-        //         this.products = this.products.filter(e => e.name.toLowerCase().search(this.search.toLowerCase()) != -1)
-        //         console.log(this.search.cont);
-        //     }
-        //     console.log(123);
-        // },
+        /*serach() {
+            if (this.serach == "") {
+                console.log(0);
+                this.products = this.product_list_for_api
+            }
+            else {
+                this.products = this.product_list_for_api
+                this.products = this.products.filter(e => e.name.toLowerCase().search(this.search.toLowerCase()) != -1)
+                console.log(this.search.cont);
+            }
+            console.log(123);
+        },*/
         apiPutProducts() {
             let cart_data = {
                 cart: this.senttoapi,
@@ -205,16 +205,13 @@ export default {
         },
         apiGetProducts() {
             product.getProducts({'search': this.search}).then((response) => {
-                //console.log(response.data)
+                console.log(response)
                 if (response.data.success) {
-                    console.log('succ')
                    this.products = response.data.data.data
                 } else {
-                    console.log('error')
                     console.log(response.data)
                 }
             })
-            console.log('api get product');
         },
 
         addToCart(id) {

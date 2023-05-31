@@ -15,6 +15,7 @@ export function request(method, url, data = {}) {
         method,
         headers: { Accept: 'application/json' },
         body: JSON.stringify(data),
+        data: data
     }).then(async (response) => {
 
         if (response.status >=200 && response.status <300) {

@@ -4,9 +4,7 @@ class product {
 
     // PAGES
     getProducts(data = {}){
-        console.log('eeeee ishlaaaa')
         console.log(data)
-        console.log('data keldimi')
         return http.get('/product', data);
     }
 
