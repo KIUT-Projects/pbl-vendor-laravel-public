@@ -1,19 +1,20 @@
-import http from "@/function/http";
+import httpReq from "@/function/http";
 
 class product {
 
     // PAGES
     getProducts(data = {}){
         console.log(data)
-        return http.get('/product', data);
+        console.log(JSON.stringify(data))
+        return httpReq.get('/product', data);
     }
 
     searchProducts(data = {}){
-        return http.post('/product/search', data);
+        return httpReq.post('/product/search', data);
     }
 
     getProduct(data = {}){
-        return http.post('/product/{data.id}', data);
+        return httpReq.post('/product/{data.id}', data);
     }
 
 }
