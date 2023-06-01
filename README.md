@@ -22,6 +22,11 @@
 - Tokenizer PHP Extension
 - XML PHP Extension
 
+## Site Pages
+- **API Route:** [/api/v1](http://127.0.0.1:8000/api/v1)
+- **Swagger Docs:** [/api/v1/docs](http://127.0.0.1:8000/v1/docs)
+- **Log viewer:** [/admin/log-viewer](http://127.0.0.1:8000/admin/log-viewer)
+
 ## Install guide
 
 Composer install
@@ -69,6 +74,11 @@ Generate API for Vue usage
 php artisan api:token
 ```
 
+Generate Swagger API Docs
+```shell
+php artisan l5-swagger:generate
+```
+
 Run Laravel server
 ```shell
 php artisan serve
@@ -77,6 +87,11 @@ php artisan serve
 Run Vite server (Frontend)
 ```shell
 npm run dev
+```
+
+Quick command for (migrate:fresh --seed, optimize:clear, api:generate)
+```shell
+php artisan m
 ```
 
 ## Database Diagram:
