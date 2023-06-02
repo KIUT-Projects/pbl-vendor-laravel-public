@@ -191,7 +191,7 @@ export default {
         },
         apiGetProducts() {
             product.getProducts({'search': this.search}).then((response) => {
-                //console.log(response.data)
+                console.log(response.data)
                 if (response.data.success) {
                     console.log(response.data.data.data)
                    this.products = response.data.data.data
