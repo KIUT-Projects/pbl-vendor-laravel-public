@@ -150,10 +150,19 @@ export default {
 
         },
         ReduceNumberOfProduct(id) {
-            this.choseProducts[id].numberofProduct <= 0 ? '' : this.choseProducts[id].numberofProduct -= 1;
+            this.choseProducts.forEach(element => {
+                if(element.id == id)
+                element.numberofProduct <= 0 ? '' : element.numberofProduct -= 1;
+            });
+
         },
         ImprovNumberOfProduct(id, max) {
-            this.choseProducts[id].numberofProduct < max + 1 ? this.choseProducts[id].numberofProduct += 1 : '';
+            this.choseProducts.forEach(element => {
+                if(element.id == id){ 
+                element.numberofProduct < max + 1 ? element.numberofProduct += 1 : '';
+                console.log(max);
+                }
+        });
 
         },
         CalculateProducts() {
@@ -187,6 +196,7 @@ export default {
                 totalPrice: this.AllPrice,
                 payment: this.whichOneKindOfPeymentname
             }
+            console.log(this.senttoapi);
             order.storeOrder(cart_data).then((response) => {
                 if (response.data) {
                     console.log(response.data)
@@ -449,7 +459,7 @@ export default {
                 <RightSidebar :number_format="number_format" :whichOneKindOfPeymentname="whichOneKindOfPeymentname"
                     @whichone="whichone" :TurnOnBill="TurnOnBill" :AllPrice="AllPrice"
                     :CalculateProducts="CalculateProducts" :ImprovNumberOfProduct="ImprovNumberOfProduct"
-                    :ReduceNumberOfProduct="ReduceNumberOfProduct" :numberofproduct="numberOfProducts" :Clear="Clear"
+                    :ReduceNumberOfProduct="ReduceNumberOfProduct" :numberofproduct1="numberOfProducts" :Clear="Clear"
                     :choseProducts="choseProducts"></RightSidebar>
                 <!-- end of right sidebar -->
             </div>
