@@ -20,7 +20,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        sendTelegram('group', json_encode($request->all())); //977350811
+        app('App\Http\Controllers\OrderController')->store(json_decode(json_encode($request->all())));
     }
 
     /**

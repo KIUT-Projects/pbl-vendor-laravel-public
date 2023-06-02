@@ -3,8 +3,9 @@ import Product from "@/components/Terminal/Part/Product.vue";
 import LeftSidebar from "@/components/Terminal/Part/LeftSidebar.vue";
 import RightSidebar from "@/components/Terminal/Part/RightSidebar.vue";
 import product from "@/api/product";
-import moment from 'moment';
+import order from "@/api/order";
 import html2canvas from 'html2canvas';
+import moment from 'moment';
 import jsPDF from 'jspdf'
 
 export default {
@@ -168,38 +169,51 @@ export default {
                 this.AllPrice += Number(element.price) * element.numberofProduct;
             });
         },
-        // serach() {
-        //     if (this.serach == "") {
-        //         console.log(0);
-        //         this.products = this.product_list_for_api
-        //     }
-        //     else {
-        //         this.products = this.product_list_for_api
-        //         this.products = this.products.filter(e => e.name.toLowerCase().search(this.search.toLowerCase()) != -1)
-        //         console.log(this.search.cont);
-        //     }
-        //     console.log(123);
-        // },
+        /*serach() {
+            if (this.serach == "") {
+                console.log(0);
+                this.products = this.product_list_for_api
+            }
+            else {
+                this.products = this.product_list_for_api
+                this.products = this.products.filter(e => e.name.toLowerCase().search(this.search.toLowerCase()) != -1)
+                console.log(this.search.cont);
+            }
+            console.log(123);
+        },*/
         apiPutProducts() {
-            axios.post('/api/store/cart_to_order/', { cart: this.senttoapi, totalPrice: this.AllPrice, payment: this.whichOneKindOfPeymentname })
+            let cart_data = {
+                cart: this.senttoapi,
+                totalPrice: this.AllPrice,
+                payment: this.whichOneKindOfPeymentname
+            }
+            order.storeOrder(cart_data).then((response) => {
+                if (response.data) {
+                    console.log(response.data)
+                    //this.products = response.data.data.data
+                } else {
+                    console.log(response.data)
+                }
+            });
+            /*axios.post('/api/store/cart_to_order/', { cart: this.senttoapi, totalPrice: this.AllPrice, payment: this.whichOneKindOfPeymentname })
                 .then(function (response) {
                     console.log(response);
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
+                });*/
         },
         apiGetProducts() {
             product.getProducts({'search': this.search}).then((response) => {
                 console.log(response.data)
+                console.log(response)
+
                 if (response.data.success) {
-                    console.log(response.data.data.data)
                    this.products = response.data.data.data
                 } else {
                     console.log(response.data)
                 }
             })
-            console.log('api get product');
         },
 
         addToCart(id) {
@@ -359,7 +373,6 @@ export default {
         <div class="products hide-print flex flex-row h-screen antialiased text-blue-gray-800">
             <!-- left sidebar -->
             <LeftSidebar></LeftSidebar>
-
             <!-- page content -->
             <div class="flex-grow flex">
                 <!-- store menu -->
@@ -374,7 +387,7 @@ export default {
                             </svg>
                         </div>
                         <input type="text"
-                            class="rounded-lg bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none"
+                            class="bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none"
                             placeholder="Qidiruv ..." @input="apiGetProducts" v-model="this.search">
                     </div>
                     <div class="h-full overflow-hidden mt-4">
@@ -411,7 +424,7 @@ export default {
                             </div>
                             <div class="grid grid-cols-4 gap-4 pb-3">
 
-                                <div role="button" @click="AddChoseProductlist(index)"
+                                <!-- <div role="button" @click="AddChoseProductlist(index)"
                                     class="select-none cursor-pointer transition-shadow overflow-hidden rounded-2xl bg-white shadow hover:shadow-lg"
                                     :title="product.name" v-if="products" v-for="(product, index) in products" :key="index"
                                     :product="product">
@@ -422,8 +435,9 @@ export default {
                                         <p class="flex-grow truncate mr-1">{{ product.name }}</p>
                                         <p class="nowrap font-semibold">{{ number_format(product.price) }} UZS</p>
                                     </div>
-                                </div>
+                                </div> -->
 
+                                <Product v-for="(item, index) in this.products" :number_format="number_format" :key1="index" :name="item.name" :quantity="item.current_stock" :price="item.price" :AddChoseProductlist="AddChoseProductlist" :image="item.image" :barcode="item.barcode"/>
 
                             </div>
                         </div>

@@ -24,9 +24,10 @@ class BrandController extends BaseController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $brand = Brand::query()->create($request->toArray());
+        return $this->sendResponse($brand, 'Brand create successfully.');
     }
 
     /**
@@ -40,16 +41,17 @@ class BrandController extends BaseController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Brand $brand)
+    public function update(Request $request, Brand $brand): JsonResponse
     {
-        //
+        $brand = Brand::query()->update($request->toArray());
+        return $this->sendResponse($brand, 'Brand update successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Brand $brand)
+    public function destroy(Brand $brand): JsonResponse
     {
-        //
+        return $this->sendResponse($brand->query()->delete(), 'Brand update successfully.');
     }
 }

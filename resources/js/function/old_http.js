@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
+    //baseURL: process.env.MIX_BASE_API_URL,
     baseURL: '/api/v1',
     headers: {
         Accept: 'application/json',
@@ -28,6 +29,5 @@ export function get(url, data) {
 }
 
 export function post(url, data = {}) {
-    //return request('post', url, data)
-    axios.post(url).then();
+    return request('post', url, data)
 }

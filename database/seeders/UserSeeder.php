@@ -22,6 +22,18 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make(env('ADMIN_PASS', 'password')),
             'avatar' => UserImageEnum::user1,
+            'user_type' => 'staff',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('users')->insert([
+            'id' => 2,
+            'name' => env('TERMINAL_NAME', 'Kassa'),
+            'email' => env('TERMINAL_MAIL', 'kassa@example.com'),
+            'email_verified_at' => now(),
+            'password' => Hash::make(env('TERMINAL_PASS', 'password')),
+            'avatar' => UserImageEnum::user2,
+            'user_type' => 'cashier',
             'created_at' => now(),
             'updated_at' => now()
         ]);

@@ -24,6 +24,7 @@ class GlobalMigrateCommand extends Command
     public $commands = [
         'php artisan optimize:clear',
         'php artisan migrate:fresh --seed',
+        'php artisan api:token',
     ];
 
     /**
