@@ -22,6 +22,7 @@ class GlobalMigrateCommand extends Command
     protected $description = 'Command description';
 
     public $commands = [
+        'php artisan l5-swagger:generate',
         'php artisan optimize:clear',
         'php artisan migrate:fresh --seed',
         'php artisan api:token',

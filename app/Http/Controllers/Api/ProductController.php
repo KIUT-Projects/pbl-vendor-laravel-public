@@ -50,14 +50,24 @@ class ProductController extends BaseController
     public function index(Request $request): JsonResponse
     {
         (int) $per_page = $request->per_page ?? 24;
+        $order = $request->order ?? 'desc';
 
         if ($request->has('search')){
             $products = Product::query()->where('name', 'LIKE', "%$request->search%")
                 ->orWhere('barcode', 'LIKE', "%$request->search%")
-                ->with(['brand', 'category', 'supplier', 'user'])->paginate($per_page);
+                ->with(['brand', 'category', 'supplier', 'user']);
         }else{
-            $products = Product::query()->with(['brand', 'category', 'supplier', 'user'])->paginate($per_page);
+            $products = Product::query()->with(['brand', 'category', 'supplier', 'user']);
         }
+
+        $products = $products->paginate($per_page);
+
+        if ($order == 'asc'){
+            $products = $products->sortBy('id');
+        }else{
+            $products = $products->sortByDesc('id');
+        }
+
 
         return $this->sendResponse(ProductResource::collection($products)->response()->getData(), 'Products retrieved successfully.');
     }
