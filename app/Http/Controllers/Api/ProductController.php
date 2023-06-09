@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Http\Resources\ProductResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class ProductController extends BaseController
 {
@@ -20,10 +20,10 @@ class ProductController extends BaseController
      *    summary="Get list of products",
      *    description="Get list of products",
      *    security={{"bearerAuth":{}}},
-     *    @OA\Parameter(name="per_page", in="query", description="limit", required=false,
+     *    @OA\Parameter(name="per_page", in="query", description="24", required=false,
      *        @OA\Schema(type="integer")
      *    ),
-     *    @OA\Parameter(name="page", in="query", description="the page number", required=false,
+     *    @OA\Parameter(name="page", in="query", description="1", required=false,
      *        @OA\Schema(type="integer")
      *    ),
      *    @OA\Parameter(name="order", in="query", description="order  accepts 'asc' or 'desc'", required=false,
@@ -50,14 +50,24 @@ class ProductController extends BaseController
     public function index(Request $request): JsonResponse
     {
         (int) $per_page = $request->per_page ?? 24;
+        (string) $order = $request->order ?? 'desc';
 
         if ($request->has('search')){
             $products = Product::query()->where('name', 'LIKE', "%$request->search%")
                 ->orWhere('barcode', 'LIKE', "%$request->search%")
-                ->with(['brand', 'category', 'supplier', 'user'])->paginate($per_page);
+                ->with(['brand', 'category', 'supplier', 'user']);
         }else{
-            $products = Product::query()->with(['brand', 'category', 'supplier', 'user'])->paginate($per_page);
+            $products = Product::query()->with(['brand', 'category', 'supplier', 'user']);
         }
+
+        $products = $products->paginate($per_page);
+
+        if ($order == 'asc'){
+            $products = $products->sortBy('id');
+        }else{
+            $products = $products->sortByDesc('id');
+        }
+
 
         return $this->sendResponse(ProductResource::collection($products)->response()->getData(), 'Products retrieved successfully.');
     }
@@ -106,23 +116,15 @@ class ProductController extends BaseController
      * Display the specified resource.
      *
      * @OA\Get(
-     *      path="/product/{id}",
-     *      operationId="show",
-     *      tags={"Products"},
-     *      summary="Get Product Detail",
-     *      description="Get Product Detail",
-     *      @OA\Parameter(name="id", in="path", description="Id of Product", required=true,
-     *          @OA\Schema(type="integer")
-     *      ),
-     *      @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *            required={"title", "content", "status"},
-     *            @OA\Property(property="title", type="string", format="string", example="Test Article Title"),
-     *            @OA\Property(property="content", type="string", format="string", example="This is a description for kodementor"),
-     *            @OA\Property(property="status", type="string", format="string", example="Published"),
-     *         ),
-     *      ),
+     *     path="/product/{id}",
+     *     operationId="show",
+     *     tags={"Products"},
+     *     summary="Get Product Detail",
+     *     description="Get Product Detail",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(name="id", in="path", description="1", required=true,
+     *        @OA\Schema(type="integer")
+     *    ),
      *     @OA\Response(
      *          response=200, description="Success",
      *          @OA\JsonContent(
