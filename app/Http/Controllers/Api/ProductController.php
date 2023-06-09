@@ -29,6 +29,9 @@ class ProductController extends BaseController
      *    @OA\Parameter(name="order", in="query", description="order  accepts 'asc' or 'desc'", required=false,
      *        @OA\Schema(type="string")
      *    ),
+     *    @OA\Parameter(name="category_id", in="query", description="1", required=false,
+     *        @OA\Schema(type="integer")
+     *    ),
      *
      *    @OA\Response(
      *          response=200, description="Success",
@@ -53,11 +56,16 @@ class ProductController extends BaseController
         (string) $order = $request->order ?? 'desc';
 
         if ($request->has('search')){
-            $products = Product::query()->where('name', 'LIKE', "%$request->search%")
-                ->orWhere('barcode', 'LIKE', "%$request->search%")
-                ->with(['brand', 'category', 'supplier', 'user']);
+            $products = Product::query()->where(function ($query) use ($request){
+                $query->where('name', 'LIKE', "%$request->search%")
+                ->orWhere('barcode', 'LIKE', "%$request->search%");
+            })->with(['brand', 'category', 'supplier', 'user']);
         }else{
             $products = Product::query()->with(['brand', 'category', 'supplier', 'user']);
+        }
+
+        if ($request->has('category_id')){
+            $products = $products->where('category_id', $request->get('category_id'));
         }
 
         $products = $products->paginate($per_page);

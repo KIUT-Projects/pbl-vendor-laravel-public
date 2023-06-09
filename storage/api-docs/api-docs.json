@@ -75,20 +75,78 @@
                                 }
                             }
                         }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/category/index_with_products": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get list of products",
+                "description": "Get list of products",
+                "operationId": "category_index_with_products",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     },
-                    "401": {
-                        "description": "Error",
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "24",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "1",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "order  accepts 'asc' or 'desc'",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "success": {
                                             "type": "boolean",
-                                            "example": "false"
+                                            "example": "true"
                                         },
                                         "message": {
                                             "type": "string",
-                                            "example": "Route not found."
+                                            "example": "Success."
+                                        },
+                                        "data": {
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"
@@ -146,26 +204,6 @@
                                 }
                             }
                         }
-                    },
-                    "401": {
-                        "description": "Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": "false"
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Route not found."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
                     }
                 },
                 "security": [
@@ -209,6 +247,15 @@
                         "required": false,
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "1",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],

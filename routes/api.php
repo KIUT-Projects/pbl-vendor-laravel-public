@@ -37,6 +37,7 @@ Route::prefix('v1')->group(function () {
     Route::middleware('auth:sanctum')->group(function (){
         Route::apiResource('product', ProductController::class);
         Route::apiResource('brand', BrandController::class);
+        Route::get('category/show_with_products', [CategoryController::class, 'show_with_products']);
         Route::apiResource('category', CategoryController::class);
         Route::apiResource('order', OrderController::class);
         Route::apiResource('currency', CurrencyController::class);
