@@ -1,15 +1,26 @@
-<script setup>
+<script >
+import CategoriesBox from './SupportComponents/CategoriesBox.vue';
+
+export default{
+    props: {
+        categories: Array,
+    },
+    components: { CategoriesBox },
+
+}
 
 </script>
 
 <template>
-    <div class="flex flex-row w-auto flex-shrink-0 pl-4 pr-2 py-4">
-        <div class="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-cyan-500 rounded-3xl" style="background: linear-gradient(72.47deg, #7367f0 22.16%, rgba(115, 103, 240, 0.7) 76.47%);">
+    <div class="flex flex-row w-auto flex-shrink-0 pl-4 pr-2 py-4" style="width: 9%;">
+        <div class="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-cyan-500 rounded-3xl" style="background: linear-gradient(72.47deg, #7367f0 22.16%, rgba(115, 103, 240, 0.7) 76.47%); width: 98%;">
             <a class="flex items-center justify-center h-12 w-12 bg-cyan-50 text-cyan-700 rounded-full" href="/admin">
                 <img :src="'/assets/faicon/apple-touch-icon.png'" style="border-radius: 10px;">
             </a>
-            <ul class="flex flex-col space-y-2 mt-12">
-                <li>
+
+            <ul class="flex flex-col space-y-2 mt-12 ul-list">
+                <li v-for="(item, index) in this.categories" :key="index" style="display: block;"><CategoriesBox :category="item"/></li>
+                <!-- <li>
                     <a class="flex items-center" href="#">
                       <span class="flex items-center justify-center h-12 w-12 rounded-2xl bg-cyan-300 shadow-lg text-white" style="background-color: #fff;
     color: #7367f0;">
@@ -38,7 +49,7 @@
                 </svg>
               </span>
                     </a>
-                </li>
+                </li> -->
             </ul>
 <!--            <a class="mt-auto flex items-center justify-center text-cyan-200 hover:text-cyan-100 h-10 w-10 focus:outline-none"
                href="https://github.com/emsifa/tailwind-pos"
@@ -50,10 +61,22 @@
                 </svg>
             </a>-->
         </div>
+        
+
     </div>
 
 </template>
 
 <style scoped>
+.ul-list{
+    overflow: auto; 
+    width: 100%;
+
+}
+
+li{
+    width: 90%;
+    margin: auto;
+}
 
 </style>

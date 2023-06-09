@@ -7,6 +7,7 @@ import order from "@/api/order";
 import html2canvas from 'html2canvas';
 import moment from 'moment';
 import jsPDF from 'jspdf'
+import categoryApi from '../../api/category';
 
 export default {
     name: "Terminal",
@@ -51,6 +52,7 @@ export default {
             bill_date: Date.now(),
             select_customer: '',
             search: "",
+            categories: [],
         }
     },
     computed: {
@@ -66,6 +68,7 @@ export default {
     mounted() {
         this.apiGetProducts();
         this.CalculateAllSum();
+        this.apiGetCategory();
     },
 
     methods: {
@@ -226,6 +229,16 @@ export default {
             })
         },
 
+        apiGetCategory(){
+            categoryApi.getCategories().then((response)=>{
+                console.log(response.data.data.data);
+                this.categories = response.data.data.data;
+
+            }).catch(Error => {
+                console.log("erro api category");
+            })
+        },
+
         addToCart(id) {
             console.log('product added (id: ' + id + ')')
             this.cart.push(
@@ -382,7 +395,7 @@ export default {
         </div>
         <div class="products hide-print flex flex-row h-screen antialiased text-blue-gray-800">
             <!-- left sidebar -->
-            <LeftSidebar></LeftSidebar>
+            <LeftSidebar :categories="categories"></LeftSidebar>
             <!-- page content -->
             <div class="flex-grow flex">
                 <!-- store menu -->
