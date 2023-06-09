@@ -4,7 +4,7 @@ class category {
 
     // PAGES
     getCategories(data = {}){
-        return http.post('/categories', data);
+        return http.get('/category', data);
     }
 
     getCategory(data = {}){

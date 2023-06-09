@@ -4,7 +4,7 @@ class product {
 
     // PAGES
     getProducts(data = {}){
-        console.log(data)
+        console.log(httpReq + "- htttpreq")
         console.log(JSON.stringify(data))
         return httpReq.get('/product', data);
     }
