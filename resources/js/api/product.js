@@ -14,7 +14,7 @@ class product {
     }
 
     getProduct(data = {}){
-        return httpReq.post('/product/{data.id}', data);
+          return httpReq.post('/product/{data.id}', data);
     }
 
     getProductsByCategoryid(){
