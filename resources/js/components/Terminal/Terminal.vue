@@ -59,6 +59,9 @@ export default {
         formattedDateTime() {
             //return moment(this.bill_date).format('dd.mm.YYYY, h:mm:ss a');
             return moment().format('LLL');
+        },
+        products(){
+            return this.$store.state.products
         }
     },
     updated() {
@@ -461,7 +464,7 @@ export default {
                                     </div>
                                 </div> -->
 
-                                <Product v-for="(item, index) in $store.state.products" :number_format="number_format" :key1="index" :name="item.name" :quantity="item.current_stock" :price="item.price" :AddChoseProductlist="AddChoseProductlist" :image="item.image" :barcode="item.barcode"/>
+                                <Product v-for="(item, index) in products" :number_format="number_format" :key1="index" :name="item.name" :quantity="item.current_stock" :price="item.price" :AddChoseProductlist="AddChoseProductlist" :image="item.image" :barcode="item.barcode"/>
 
                             </div>
                         </div>

@@ -11,7 +11,7 @@ import App from './App.vue'
 import router from './router'
 
 import './style.css'
-import store from './components/Terminal/store';
+import store from './store/index';
 
 createApp(App)
     .use(router)

@@ -84,14 +84,65 @@
                 ]
             }
         },
-        "/category/index_with_products": {
+        "/category/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get Category Detail",
+                "description": "Get Category Detail",
+                "operationId": "category_show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "1",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Route not found."
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/category/show_with_products": {
             "get": {
                 "tags": [
                     "Categories"
                 ],
                 "summary": "Get list of products",
                 "description": "Get list of products",
-                "operationId": "category_index_with_products",
+                "operationId": "category_show_with_products",
                 "parameters": [
                     {
                         "name": "category_id",
@@ -144,57 +195,6 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Success."
-                                        },
-                                        "data": {
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/category/{id}": {
-            "get": {
-                "tags": [
-                    "Categories"
-                ],
-                "summary": "Get Category Detail",
-                "description": "Get Category Detail",
-                "operationId": "category_show",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "1",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": "true"
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Route not found."
                                         },
                                         "data": {
                                             "type": "object"
