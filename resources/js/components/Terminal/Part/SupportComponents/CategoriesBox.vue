@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" @click="HoldonBox">
         <div class="head"><img :src="category.image" alt=""></div>
         <div class="body"><p>{{ category.name}}</p></div>
     </div>
@@ -11,6 +11,11 @@ export default {
     props:{
         category: Object,
         name: String,
+    },
+    methods:{
+        HoldonBox(){
+            this.$store.commit('apiGetProductsByCategoryId');
+        }
     }
 }
 </script>

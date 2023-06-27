@@ -17,6 +17,10 @@ class product {
         return httpReq.post('/product/{data.id}', data);
     }
 
+    getProductsByCategoryid(){
+        return httpReq.get('/category/1?1')
+    }
+
 }
 
 export default new product();

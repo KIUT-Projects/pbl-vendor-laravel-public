@@ -42,7 +42,7 @@ export default {
                 }
             },
             choseProducts: [],
-            products: [],
+            // products: [],
             product_list_for_api: [],
             numberOfProducts: 0,
             AllPrice: 0,
@@ -66,9 +66,10 @@ export default {
     created() {
     },
     mounted() {
-        this.apiGetProducts();
+        // this.apiGetProducts();
         this.CalculateAllSum();
         this.apiGetCategory();
+        this.$store.commit('apiGetProducts')
     },
 
     methods: {
@@ -124,7 +125,7 @@ export default {
             let product;
             this.CalculateProducts();
             this.choseProducts.forEach(element => {
-                if (element.id == this.products[id].id) {
+                if (element.id == this.$store.state.products[id].id) {
                     yesOrNo = true;
                     counter = i;
                 }
@@ -134,7 +135,7 @@ export default {
             if (yesOrNo == true) {
                 this.choseProducts[counter].numberofProduct++;
             } else {
-                product = this.products[id];
+                product = this.$store.state.products[id];
                 product.numberofProduct = 1;
                 this.choseProducts.push(product);
             }
@@ -222,7 +223,7 @@ export default {
                 console.log(response)
 
                 if (response.data.success) {
-                   this.products = response.data.data.data
+                //    this.products = response.data.data.data
                 } else {
                     console.log(response.data)
                 }
@@ -460,7 +461,7 @@ export default {
                                     </div>
                                 </div> -->
 
-                                <Product v-for="(item, index) in this.products" :number_format="number_format" :key1="index" :name="item.name" :quantity="item.current_stock" :price="item.price" :AddChoseProductlist="AddChoseProductlist" :image="item.image" :barcode="item.barcode"/>
+                                <Product v-for="(item, index) in $store.state.products" :number_format="number_format" :key1="index" :name="item.name" :quantity="item.current_stock" :price="item.price" :AddChoseProductlist="AddChoseProductlist" :image="item.image" :barcode="item.barcode"/>
 
                             </div>
                         </div>
