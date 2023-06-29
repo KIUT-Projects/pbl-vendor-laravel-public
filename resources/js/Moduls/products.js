@@ -15,6 +15,12 @@ const getters = {
 }
 
 
-export default{}
+export default{
+    state,
+    mutations,
+    actions,
+    getters
+
+}
 
 
